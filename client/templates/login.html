@@ -1,0 +1,91 @@
+{% extends "base.html"%} {% block title %} Login {% endblock %} {% block content
+%}
+<section class="gradient-form login-section">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="rounded-3 text-black">
+          <div class="row g-0 login-div">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="{{ url_for('static', filename='logo_long.svg') }}"
+                    style="width: 300px"
+                    alt="logo"
+                    class="mt-3 mb-4 pb-1"
+                  />
+                </div>
+
+                <form action="" method="POST">
+                  <h4 align="center" class="mb-3">
+                    Please login to your account.
+                  </h4>
+
+                  <div class="form-outline mb-4">
+                    <label for="email">Email Address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="@email.ca"
+                    />
+                  </div>
+
+                  <div class="form-outline mb-3">
+                    <label for="password1">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      placeholder="Enter password"
+                    />
+                  </div>
+
+                  <div class="text-center pt-1 mb-3 pb-1">
+                    <button
+                      class="btn btn-primary btn-block fa-md mb-2.5 pt-2 pb-2 login-login-btn"
+                      type="Submit"
+                    >
+                      Login
+                    </button>
+                  </div>
+
+                  <div
+                    class="d-flex align-items-center justify-content-center pb-4"
+                  >
+                    <p class="mb-0 p-sm-0.3 mr-2 login-prompt-text">
+                      Don't have an account?
+                    </p>
+                    <a href="/sign-up"
+                      ><button
+                        type="button"
+                        class="btn login-sign-btn login-prompt-text-btn"
+                        href="/sign-up"
+                      >
+                        Create an account
+                      </button>
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-3">
+                <h4 class="mb-4">Having fun without worrying</h4>
+                <h4 class="small mb-0 login-side-text">
+                  When someone you're close to is going out, you should'nt need
+                  to be worried. Send automated texts when you want to ensure
+                  their safety!
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
