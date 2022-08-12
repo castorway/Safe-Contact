@@ -64,31 +64,27 @@ def logout():
 def sign_up():
     if request.method == "POST":
         #email = request.form.get('email')
-        first_name = request.form.get('firstName')
+        username = request.form.get('username')
         init_password = request.form.get('init_password')
         confirm_password = request.form.get('confirm_password')
         phone_number = request.form.get('phone_number')
 
         # find if user email already exists, error
-        user = User.query.filter_by(pho).first()
+        user = User.query.filter_by(phone_number=phone_number).first()
         if user:
-            flash("Email already exists.", category='error')
-        elif len(email) < 4:
-            flash("Email must be greater than 3 characters.", category="error")
-        elif len(first_name) < 2:
-            flash("First name must be greator than 1 character.", category="error")
+            flash("Account with this phone number already exists.", category='error')
+        elif len(username) < 2:
+            flash("Username must be greator than 1 character.", category="error")
         elif init_password != confirm_password:
             flash("Passwords don\'t match", category="error")
         elif len(init_password) < 7:
             flash("Password must be at least 7 characters", category="error")
-        # elif not email.endswith('@ualberta.ca'):
-        #     flash("Must use a @ualberta.ca email address to sign up (ex: jsmith@ualberta.ca).", category="error")
 
         else:
-
+            # ready for verification; save params and go to verify page
             user_params = {
-                'email' : email,
-                'first_name' : first_name,
+                'phone_number' : phone_number,
+                'username' : username,
                 'password' : generate_password_hash(init_password, method="sha256")
             }
 
@@ -103,31 +99,27 @@ def sign_up():
         return render_template('sign_up.html', user=current_user)
 
 
-
 @auth.route('/verify', methods=['GET', 'POST'])
 def verify():
-    # verification page
     if request.method == 'GET':
         # make a new verification
-        country_code = request.form['country_code']
-        phone_number = request.form['phone_number']
+        user_params = session['user_params']
 
-        session['country_code'] = country_code
-        session['phone_number'] = phone_number
-
-        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=country_code + phone_number)
+        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=user_params['phone_number'])
         session['verification_check'] = verification_check
 
     else:
-        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=country_code + phone_number)
+        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=user_params['phone_number'])
         if verification_check.status == 'approved':
             # only if the user enters the correct code do we add the user
-            print("Add new user")
+            print("Adding new user with params", user_params)
 
             new_user = User(**user_params)
             db.session.add(new_user)
             db.session.commit()
-            login_user(new_user, remember=True)  # logging in this user
+
+            # log in the new user
+            login_user(new_user, remember=True)
             flash("Account created!", category="success")
             return redirect(url_for("routes.home"))
         else:
