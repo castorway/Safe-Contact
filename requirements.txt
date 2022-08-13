@@ -4,3 +4,5 @@ flask-login
 python-dotenv
 twilio
 flask_apscheduler
+pymongo
+fontawesomefree
