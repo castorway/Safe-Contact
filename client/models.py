@@ -31,7 +31,6 @@ class Text(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time_sent = db.Column(db.DateTime)
     reply_contents = db.Column(db.String(300))
-    reply_time = db.Column(db.DateTime)
 
     connection_id = db.Column(db.Integer, db.ForeignKey("connection.id"))
     connection = relationship("Connection", backref="texts")
