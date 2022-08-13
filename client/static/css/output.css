@@ -801,10 +801,6 @@ video {
   width: 115%;
 }
 
-.w-2\/4 {
-  width: 50%;
-}
-
 .w-fit {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -997,11 +993,6 @@ video {
   background-color: rgb(255 158 158 / var(--tw-bg-opacity));
 }
 
-.bg-emerald-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 211 153 / var(--tw-bg-opacity));
-}
-
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -1113,14 +1104,14 @@ video {
   line-height: 1;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
@@ -1164,11 +1155,6 @@ video {
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
-.text-green-500 {
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1202,11 +1188,6 @@ video {
   font-family: "Poppins", sans-serif;
 }
 
-.otc {
-  position: relative;
-  margin: 0 auto;
-}
-
 .otc fieldset {
   border: 0;
   padding: 0;
@@ -1218,23 +1199,18 @@ video {
   align-items: center;
 }
 
-.otc legend {
-  margin: 0 auto 1em;
-  color: #5555ff;
-}
-
 input[type="number"] {
-  width: 0.82em;
+  width: 1.5em;
   line-height: 1;
   margin: 0.1em;
   padding: 8px 0 4px;
-  font-size: 2.65em;
+  font-size: 1.5em;
   text-align: center;
   -moz-appearance: textfield;
        appearance: textfield;
   -webkit-appearance: textfield;
   border: 2px solid #bbbbff;
-  color: purple;
+  color: black;
   border-radius: 4px;
 }
 
@@ -1246,14 +1222,15 @@ input::-webkit-inner-spin-button {
 
 /* 2 group of 3 items */
 
-/* input[type="number"]:nth-child(n + 4) {
+input[type="number"]:nth-child(n + 4) {
   order: 2;
 }
+
 .otc div::before {
   content: "";
   height: 2px;
-  width: 24px;
-  margin: 0 0.25em;
+  width: 15px;
+  margin: 2em 0.25em;
   order: 1;
   background: #bbbbff;
 }
@@ -1270,7 +1247,7 @@ input::-webkit-inner-spin-button {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
-} */
+}
 
 /* .home-card {
   @apply 
