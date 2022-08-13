@@ -7,63 +7,68 @@
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous" />
+    <title>Home</title>
 </head>
 
-<body>
+<body class="bg-gray-200">
     <!-- main  -->
-    <div class="w-screen h-screen bg-white flex flex-row justify-start overflow-hidden shadow-xl">
-        <!-- lhs -->
-        <div
-            class="bg-gray-700 w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-2xl overflow-hidden">
+    <div class="w-screen h-screen bg flex flex-row justify-start shadow-xl overflow-hidden">
+        <!-- sidebar -->
+        <div class="bg-white w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-2xl overflow-hidden">
             <!-- logo and name -->
             <div class="flex flex-col mb-16 mt-40">
                 <!-- logo -->
                 <div class="flex justify-center items-center">
-                    <div class="h-10 w-10 mb-4">
+                    <div class="h-10 w-10 mb-2">
                         <img src="{{ url_for('static', filename='logo.svg') }}" style="width: 150px;" alt="logo" />
                     </div>
                 </div>
 
                 <!-- name -->
-                <div class="font-regular text-3xl text-gray-500 ml-4 mt-[3px]">
+                <div class="font-regular text-3xl text-gray-500 ml-4">
                     Safe Contact
                 </div>
             </div>
 
             <!-- vertical navbar -->
-            <aside class="flex flex-col items-center bg-white text-gray-700 shadow w-full p-20">
+            <aside class="flex flex-col items-center text-gray-700 w-full ">
                 <!-- Side Nav Bar-->
 
                 <ul class="text-bold text-gr">
                     <!-- Items Section -->
 
-                    <li class="hover:bg-gray-100">
+                    <li class="hover:bg-gray-100 w-full flex flex-row">
+                        <i class="fa-solid fa-house-chimney text-black bg-black"></i>
                         <a href="." class="h-16 px-6 flex justify-left items-center w-full
-  					focus:text-orange-500">
+  					focus:text-orange-500 ml-4">
                             Overview
                         </a>
                     </li>
 
-                    <li class="hover:bg-gray-100">
+                    <li class="hover:bg-gray-100 w-full flex flex-row">
+                        <i class="fa-solid fa-house-chimney"></i>
                         <a href="/connection" class="h-16 px-6 flex justify-left items-center w-full
-  					focus:text-orange-500">
+  					focus:text-orange-500 ml-4">
                             Manage Sessions
                         </a>
                     </li>
 
-                    <li class="hover:bg-gray-100">
+                    <li class="hover:bg-gray-100 w-full flex flex-row">
+                        <i class="fa-solid fa-house-chimney"></i>
                         <a href="." class="h-16 px-6 flex justify-left items-center w-full
-  					focus:text-orange-500">
-                            Friend
+  					focus:text-orange-500 ml-4">
+                            Friends
 
                         </a>
                     </li>
 
-                    <li class="hover:bg-gray-100">
-                        <a href="." class="h-16 px-6 flex justify-left items-center w-full
-  					focus:text-orange-500">
-                            Smth here
+                    <li class="hover:bg-gray-100 w-full flex flex-row">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <a href="/settings" class="h-16 px-6 flex justify-left items-center w-full
+  					focus:text-orange-500 ml-4">
+                            Settings
                         </a>
                     </li>
 
@@ -72,7 +77,7 @@
 
         </div>
         <!-- rhs -->
-        <div class="flex flex-col w-5/6 bg-purple-600 h-full p-8">
+        <div class="flex flex-col w-5/6 bg-gray-100 h-full p-8">
             {% block content %} {% endblock %}
 
 
