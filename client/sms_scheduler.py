@@ -55,7 +55,7 @@ def send_texts(scheduler):
                     text_contents = conn.text_contents
 
                 print('contents:', text_contents)
-                client.messages.create(to=TWILIO_NUMBER, from_="+19788785139", body=text_contents)
+                client.messages.create(body=text_contents, from_=TWILIO_NUMBER, to=number)
                 
                 # set last time to now
                 conn.last_text = now

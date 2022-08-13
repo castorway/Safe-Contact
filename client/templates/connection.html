@@ -20,27 +20,27 @@
                             <label for="username">Person/Conncection</label>
                             <input type="text" id="person" name="username" placeholder="Person"
                                 class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                id="person large-input" name="person" placeholder="Person" />
+                                id="person large-input" name="person" placeholder="Person" required />
                         </div>
                         <div class="flex flex-row w-full space-x-3">
                             <div class="mb-6 w-1/3">
                                 <label for="dd">Start Time</label>
                                 <input type="time" id="start_time" name="start_time" placeholder="Start Date"
                                     class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                    id="dd large-input" name="dd" placeholder="dd" />
+                                    id="dd large-input" name="dd" placeholder="dd" required />
                             </div>
                             <div class="mb-4 w-1/3">
                                 <label for="username">End Time</label>
                                 <input type="time" id="end_time" name="end_time" placeholder="End Date"
                                     class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                    id="end_date large-input" name="end_date" />
+                                    id="end_date large-input" name="end_date" required />
                             </div>
                             <div class="mb-6 w-1/3">
                                 <label for="interval">Time Interval (minutes)</label>
                                 <input type="text" pattern="\d*" id="interval" name="interval"
                                     placeholder="Time Interval"
                                     class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                    id="interval large-input" />
+                                    id="interval large-input" required />
                             </div>
                         </div>
                         <!-- <div class="mb-6 w-1/3 flex flex-row">
@@ -54,7 +54,7 @@
                         <label for="description">Description</label>
                         <textarea id="message" rows="5" name="text_contents"
                             class="block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                            placeholder="Your message..."></textarea>
+                            placeholder="Your message..." required></textarea>
 
                     </div>
                 </div>
