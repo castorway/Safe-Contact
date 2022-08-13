@@ -67,3 +67,59 @@ input[type="number"]:nth-child(n + 4) {
 /* .home-card {
   @apply 
 } */
+
+.rgb-baby {
+  animation: rgb-anim 10s infinite;
+}
+
+.rgb-baby-r {
+  animation: rgb-anim 20s infinite reverse;
+}
+
+@keyframes rgb-anim {
+  14% {
+    background-color: rgb(255, 162, 162);
+  }
+  28% {
+    background-color: rgb(255, 216, 143);
+  }
+  42% {
+    background-color: rgb(255, 255, 193);
+  }
+  66% {
+    background-color: rgb(151, 248, 255);
+  }
+  75% {
+    background-color: rgb(215, 159, 254);
+  }
+  86% {
+    background-color: rgb(255, 151, 255);
+  }
+  100% {
+    background-color: rgb(255, 144, 144);
+  }
+}
+
+.scroll {
+  overflow-y: overlay;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  /* border-radius: 100vh; */
+  /* background: #f7f4ed; */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #e0cbcb;
+  border-radius: 100vh;
+  /* border: 3px solid #f6f7ed; */
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c0a0b9;
+}
