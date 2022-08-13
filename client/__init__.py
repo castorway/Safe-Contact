@@ -1,9 +1,11 @@
 # setup for flask app
 from flask import Flask, app
 from flask_sqlalchemy import SQLAlchemy
+from flask_apscheduler import APScheduler
 from os import path
 from flask_login import LoginManager, login_manager
 
+TEXT_JOB_INTERVAL = 20 # seconds
 
 db = SQLAlchemy()  # init db
 DB_NAME = 'database.db'
@@ -21,12 +23,25 @@ def create_app():
     # import blueprints
     from .auth import auth
     from .routes import routes
+    from .connections import conns
     
     # import models
     from .models import User
 
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(routes, url_prefix='/')
+    app.register_blueprint(conns, url_prefix='/')
+
+    # scheduler stuff
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
+
+    from .sms_scheduler import send_texts
+    def send_texts_job():
+        send_texts(scheduler)
+
+    scheduler.add_job(id='send texts', func=send_texts_job, trigger='interval', seconds=TEXT_JOB_INTERVAL)
     
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'

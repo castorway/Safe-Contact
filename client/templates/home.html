@@ -1,38 +1,32 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/output.css') }}"
-    />
-    <title>Document</title>
-  </head>
+{% extends "base_home.html"%} {% block content %}
 
-  <body>
-    <!-- main  -->
-    <div
-      class="w-screen h-screen bg-white flex flex-row justify-start overflow-hidden shadow-xl"
-    >
-      <!-- lhs -->
-      <div
-        class="bg-gradient-to-t from-stone-800 to-stone-700 w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-3xl overflow-hidden"
-      >
-        <!-- top part of lhs -->
-        <div class="text-center text-white text-2xl font-bold mb-12">
-          SIDEBAR
-        </div>
-        <div class="rounded-full w-28 h-28 bg-red-100"></div>
-        <div class="text-white mt-3 font-bold">Current User</div>
-        <div class="text-stone-400 text-sm my-2">Admin</div>
 
-        <!-- options -->
-      </div>
+<!-- rhs -->
+<div class="flex flex-col w-full bg-purple-600 h-full p-8">
 
-      <!-- rhs -->
-      <div class="w-5/6 h-full"></div>
+  <!-- profile and logout -->
+  <div class="upperhalf bg-blue-600 w-full h-40 flex flex-row justify-between items-center px-5">
+    <!-- profile -->
+    <div class="flex flex-row gap-3 items-center">
+      <div class="rounded-full w-16 h-16 bg-red-100"></div>
+      <div class="text-black text-2xl font-bold">Username</div>
     </div>
-  </body>
-</html>
+    <!-- logout -->
+    <div class="text-black">Logout</div>
+  </div>
+
+  <!-- two containers (CONTENT) -->
+  <div class="bottomhalf flex flex-row w-full h-full">
+    <!-- left container -->
+    <div class="left flex flex-col justify-evenly bg-green-600 h-full w-3/5">
+      <!-- Title -->
+      <div class="font-regular text-3xl text-gray-500 ml-4">My Connections</div>
+
+      <!-- cards -->
+    </div>
+    <!-- right container -->
+    <div class="right bg-orange-600 h-full w-2/5">Right</div>
+
+  </div>
+</div>
+{% endblock %}

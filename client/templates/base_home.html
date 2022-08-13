@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- main  -->
+    <div class="w-screen h-screen bg-white flex flex-row justify-start overflow-hidden shadow-xl">
+        <!-- lhs -->
+        <div
+            class="bg-gray-700 w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-2xl overflow-hidden">
+            <!-- logo and name -->
+            <div class="flex flex-col mb-16 mt-40">
+                <!-- logo -->
+                <div class="flex justify-center items-center">
+                    <div class="h-10 w-10 mb-4">
+                        <img src="{{ url_for('static', filename='logo.svg') }}" style="width: 150px;" alt="logo" />
+                    </div>
+                </div>
+
+                <!-- name -->
+                <div class="font-regular text-3xl text-gray-500 ml-4 mt-[3px]">
+                    Safe Contact
+                </div>
+            </div>
+
+            <!-- vertical navbar -->
+            <aside class="flex flex-col items-center bg-white text-gray-700 shadow w-full p-20">
+                <!-- Side Nav Bar-->
+
+                <ul class="text-bold text-gr">
+                    <!-- Items Section -->
+
+                    <li class="hover:bg-gray-100">
+                        <a href="." class="h-16 px-6 flex justify-left items-center w-full
+  					focus:text-orange-500">
+                            Overview
+                        </a>
+                    </li>
+
+                    <li class="hover:bg-gray-100">
+                        <a href="/connection" class="h-16 px-6 flex justify-left items-center w-full
+  					focus:text-orange-500">
+                            Manage Sessions
+                        </a>
+                    </li>
+
+                    <li class="hover:bg-gray-100">
+                        <a href="." class="h-16 px-6 flex justify-left items-center w-full
+  					focus:text-orange-500">
+                            Friend
+
+                        </a>
+                    </li>
+
+                    <li class="hover:bg-gray-100">
+                        <a href="." class="h-16 px-6 flex justify-left items-center w-full
+  					focus:text-orange-500">
+                            Smth here
+                        </a>
+                    </li>
+
+                </ul>
+            </aside>
+
+        </div>
+        <!-- rhs -->
+        <div class="flex flex-col w-5/6 bg-purple-600 h-full p-8">
+            {% block content %} {% endblock %}
+
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
