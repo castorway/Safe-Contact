@@ -37,8 +37,24 @@
                             <div class="font-light text-sm">
                                 Please login in to your account.
                             </div>
-                        </div>
+                                   <!-- Flashed messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}
+                    <!-- if the category is error -->
+                    {% if category == "error" %}
+                    <!-- error message(s) -->
+                    <div class="text-md font-light text-red-600">
+                        <strong>{{ message }}</strong>
                     </div>
+                    {% elif category == "success" %}
+                    <!-- success message(s) -->
+                    <div class="text-md font-light text-black bg-[#9EFFBA]">
+                        <strong>{{ message }}</strong>
+                    </div>
+                    {% endif %} {% endfor %} {% endif %} {% endwith %}
+                        </div>
+                        
+                    </div>
+
 
 
                     <!-- fields -->
@@ -48,7 +64,7 @@
                             <!-- Username -->
                             <label for="username">Username</label>
                             <input type="text" id="username" name="username" placeholder="Username"
-                                class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2 m"
+                                class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
                                 id="email large-input" name="email" placeholder="Email" />
                         </div>
                         <!-- password field -->
