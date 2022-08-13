@@ -58,12 +58,15 @@
                                         <form action="" method="POST">
                                             <h4 align="center" class="mb-3">Sign Up</h4>
                                             <div class="form-group">
-                                                <label for="email">Email Address</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
+                                              <label for="email">Country Code + Phone Number</label>
+                                              <input type="text" class="form-control" name="country_code" placeholder="+1">
+                                              <input type="tel" class="form-control" name="phone_number" placeholder="0123456789"
+                                                  pattern="[0-9]{10}" maxlength="10">
                                             </div>
+                                  
                                             <div class="form-group">
                                                 <label for="email">Name</label>
-                                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" />
+                                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="init_password">Password</label>
@@ -73,10 +76,7 @@
                                                 <label for="confirm_password">Confirm Password</label>
                                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" />
                                             </div>
-                                            <div class="form-group">
-                                                <label for="phone_number">Phone Number</label>
-                                                <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Telephone number" />
-                                            </div>
+                                            
                                             <button class="btn btn-primary btn-block fa-md mb-2.5 pt-2 pb-2 login-login-btn" type="Submit">
                           Sign Up
                         </button>

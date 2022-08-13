@@ -20,6 +20,9 @@ def create_app():
 
     # import blueprints
     from .auth import auth
+    
+    # import models
+    from .models import User
 
     app.register_blueprint(auth, url_prefix='/')
     
