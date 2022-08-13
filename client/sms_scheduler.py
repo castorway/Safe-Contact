@@ -32,8 +32,10 @@ def send_texts(scheduler):
         earlier_time = (now - timedelta(minutes=TOLERANCE)).time()
         print(this_time, earlier_time)
 
-        connections = Connection.query.filter(Connection.time <= this_time)
-        connections = connections.filter(Connection.time >= earlier_time)
+        connections = Connection.query.filter(Connection.start_time <= this_time)
+        connections = connections.filter(Connection.start_time >= earlier_time)
+
+        connections = connections.filter(Connection.end_time >= this_time)
 
         for conn in connections:
             if DEBUG: print(">", conn, conn.last_text, conn.interval, this_time, flush=True)
