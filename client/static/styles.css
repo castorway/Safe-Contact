@@ -75,3 +75,7 @@ input[type="number"]:nth-child(n + 4) {
   width: 1px !important;
   white-space: nowrap !important;
 }
+
+/* .home-card {
+  @apply 
+} */

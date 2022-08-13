@@ -35,3 +35,7 @@ def connection():
     else:
         return render_template('connection.html', user=current_user)
 
+@conns.route('/settings', methods=['GET', 'POST'])
+# @login_required
+def settings():
+    return render_template('settings.html', user=current_user)

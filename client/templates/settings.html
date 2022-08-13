@@ -1,0 +1,96 @@
+{% extends "base_home.html"%} {% block content %}
+<div class="flex flex-col h-full mt-10 ml-5">
+    <div class="flex flex-col w-3/5 ml-8 bg-white rounded-2xl p-10">
+        <!-- Instructions -->
+        <div class="w-1/2 h-full flex flex-col mt-4">
+            <div class="font-bold text-3xl mb-2">
+                Settings!
+            </div>
+            <div class="text-sm text-black">Change your information then hit Save!</div>
+        </div>
+
+        <!-- The form -->
+        <form method="POST">
+            <div>
+
+                <!-- text -->
+                <div class="mb-8">
+                    <!-- title and sub-title -->
+                    <div>
+
+                        <!-- Flashed messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for
+                        category, message in messages %}
+                        <!-- if the category is error -->
+                        {% if category == "error" %}
+                        <!-- error message(s) -->
+                        <div class="text-md font-light text-red-600">
+                            <strong>{{ message }}</strong>
+                        </div>
+                        {% elif category == "success" %}
+                        <!-- success message(s) -->
+                        <div class="text-md font-light text-black bg-[#9EFFBA]">
+                            <strong>{{ message }}</strong>
+                        </div>
+                        {% endif %} {% endfor %} {% endif %} {% endwith %}
+                    </div>
+                </div>
+
+
+
+                <!-- fields -->
+                <div>
+                    <!-- username field -->
+                    <div class=mb-3>
+                        <label for="username">Username</label>
+                        <input type="text " id="username" name="username" placeholder="Username"
+                            class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
+                    </div>
+
+                    <!-- phone number field -->
+                    <label for="country_code">Phone Number</label>
+                    <div class="mb-3 input-group flex flex-row justify-between ">
+                        <br>
+                        <div class="flex-auto w-1/5 mr-2"><input type="text" id="country_code" name="country_code"
+                                placeholder="+1"
+                                class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
+                        </div>
+                        <div class="flex-auto w-4/5 "><input type="tel" name="phone_number" placeholder="0123456789"
+                                pattern="[0-9]{10}" maxlength="10"
+                                class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2">
+                        </div>
+                    </div>
+
+                    <!-- password field 1 -->
+                    <div class=mb-3>
+                        <label for="password">Password</label>
+                        <input type="password" id="init_password" name="init_password" placeholder="Password"
+                            class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
+                    </div>
+
+                    <!-- password field 2 -->
+                    <div class=mb-6>
+                        <label for="confirm_username">Username</label>
+                        <input type="password" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm password"
+                            class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- buttons -->
+            <div class="flex mb-2">
+                <!-- login button -->
+                <div class="w-full">
+                    <button type="Submit"
+                        class="w-full h-[55px] bg-black hover:bg-gray-700 text-white hover:text-white hover:border-black font-medium py-2 px-4 rounded">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

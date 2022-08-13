@@ -1,57 +1,56 @@
 {% extends "base_home.html"%} {% block content %}
-<div class="flex flex-col h-full">
-    <!--
-    Start date
-    end date
-    time interval
-    connection
-     -->
-    <div class="bg-red-500 flex flex-row h-1/2">
+<div class="flex flex-col h-full mt-10 ml-5">
+    <div class="flex flex-col h-1/2 ml-8 bg-white rounded-2xl p-10">
         <!-- Instructions -->
-        <div class="w-1/2 h-full flex flex-col justify-center items-center bg-blue-400">
-            <div class="text-xl text-black">Start a session</div>
+        <div class="w-1/2 h-full flex flex-col mt-4">
+            <div class="font-bold text-3xl mb-2">
+                Start Sessions!
+            </div>
             <div class="text-sm text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis modi
-                natus odit iusto adipisci laudantium quam? Qui sit est quidem nobis possimus nihil sequi! Ipsa expedita
-                maxime ad aspernatur officia!</div>
+                natus odit iusto adipisci laudantium quam? Qui sit est quidem nobis possimus nihil sequi!</div>
         </div>
+
         <!-- The form -->
-        <div class="w-1/2 h-full bg-green400">
-            <div class=mb-6>
+        <div class="w-1/2 h-full bg-green400 mt-8">
+            <div class="mb-6">
                 <label for="username">Person/Conncection</label>
                 <input type="text" id="person" name="person" placeholder="Person"
-                    class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                    class="form-control block p-2 w-full text-black bg-[#ffffff] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
                     id="person large-input" name="person" placeholder="Person" />
             </div>
-            <div class=mb-6>
-                <label for="dd">Start Date</label>
-                <input type="text" id="dd" name="dd" placeholder="dd"
-                    class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                    id="dd large-input" name="dd" placeholder="dd" />
+            <div class="flex flex-row w-full space-x-3">
+                <div class="mb-6 w-1/3">
+                    <label for="dd">Start Date</label>
+                    <input type="datetime-local" id="dd" name="dd" placeholder="dd"
+                        class="form-control block p-2 w-full text-black bg-[#ffffff] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                        id="dd large-input" name="dd" placeholder="dd" />
+                </div>
+                <div class="mb-6 w-1/3">
+                    <label for="username">End Date</label>
+                    <input type="datetime-local" id="end_date" name="end_date" placeholder="End Date"
+                        class="form-control block p-2 w-full text-black bg-[#ffffff] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                        id="end_date large-input" name="end_date" />
+                </div>
+                <div class="mb-6 w-1/3">
+                    <label for="username">Interval</label>
+                    <input type="text" id="end_date" name="end_date" placeholder="Time Interval"
+                        class="form-control block p-2 w-full text-black bg-[#ffffff] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                        id="interval large-input" name="end_date" />
+                </div>
             </div>
-            <div class=mb-6>
-                <label for="username">End Date</label>
-                <input type="text" id="end_date" name="end_date" placeholder="End Date"
-                    class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                    id="end_date large-input" nassme="end_date" placeholder="end_date" />
-            </div>
-            <div class="">
-                <label for="username">Interval</label>
-                <input type="text" id="end_date" name="end_date" placeholder="End Date"
-                    class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                    id="interval large-input" name="end_date" placeholder="end_date" />
-            </div>
+
             <!-- buttons -->
             <div class="flex mb-20">
                 <!-- login button -->
-                <div class="w-full">
+                <div class="w-3/5">
                     <button type="Submit"
-                        class="w-full h-[55px] bg-black hover:bg-gray-700 text-white hover:text-white hover:border-black font-medium py-2 px-4 rounded">
-                        Login
+                        class="w-full h-[50px] bg-black hover:bg-gray-700 text-white hover:text-white hover:border-black font-medium py-2 px-4 rounded">
+                        Start Session
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-green-500 h-1/2">View/Manage all sessions</div>
+    <div class="bg-green-500 h-1/2 ml-8">View/Manage all sessions</div>
 </div>
 {% endblock %}
