@@ -37,7 +37,7 @@ def login():
             else:
                 flash("Incorrect password, try again.", category="error")
         else:
-            flash("Email does not exist.", category='error')
+            flash("Username or passowrd does not match.", category='error')
         
     return render_template('login.html', user=current_user)
 

@@ -43,7 +43,7 @@
                     <!-- username field -->
                     <div class=mb-3>
                         <label for="username">Username</label>
-                        <input type="text " id="username" name="username" placeholder="Username"
+                        <input type="text " id="username" name="username" placeholder="{{current_user.username}}"
                             class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
                     </div>
 
@@ -52,11 +52,11 @@
                     <div class="mb-3 input-group flex flex-row justify-between ">
                         <br>
                         <div class="flex-auto w-1/5 mr-2"><input type="text" id="country_code" name="country_code"
-                                placeholder="+1"
+                                placeholder="{{current_user.country_code}}"
                                 class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2" />
                         </div>
-                        <div class="flex-auto w-4/5 "><input type="tel" name="phone_number" placeholder="0123456789"
-                                pattern="[0-9]{10}" maxlength="10"
+                        <div class="flex-auto w-4/5 "><input type="tel" name="phone_number"
+                                placeholder="{{current_user.phone_number}}" pattern="[0-9]{10}" maxlength="10"
                                 class="form-control block p-4 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2">
                         </div>
                     </div>

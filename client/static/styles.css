@@ -26,7 +26,7 @@ input[type="number"] {
   text-align: center;
   appearance: textfield;
   -webkit-appearance: textfield;
-  border: 2px solid #bbbbff;
+  border: 2px solid #adadad;
   color: black;
   border-radius: 4px;
 }
