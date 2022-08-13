@@ -6,13 +6,11 @@ from twilio.base.exceptions import TwilioRestException
 
 from datetime import datetime, timedelta
 
-
 load_dotenv()
 TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
 VERIFY_SERVICE_SID = os.environ.get('VERIFY_SERVICE_SID')
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-
 
 client = Client(os.environ['TWILIO_SID'], os.environ['TWILIO_AUTH'])
 
@@ -61,7 +59,6 @@ client = Client(os.environ['TWILIO_SID'], os.environ['TWILIO_AUTH'])
 
 #         db.session.commit()
 
-
 def send_verification(number):
     """ Send SMS verification code using Twilio
     """
@@ -75,4 +72,3 @@ def check_verification(number, code):
     """
     ver = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to='+15017122661', code='123456')
     return check.status == 'approved'
-
