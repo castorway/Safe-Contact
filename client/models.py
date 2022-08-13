@@ -7,5 +7,5 @@ class User(db.Model, UserMixin):
     country_code = db.Column(db.String(10), unique=False)
     phone_number = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
-    username = db.Column(db.String(150))
+    username = db.Column(db.String(150), unique=True)
     

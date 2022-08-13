@@ -14,6 +14,6 @@ client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 # service = client.verify.services.create(friendly_name='safecontact_verify_service')
 # print('Verification service ID: '+service.sid)
 
-verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to='+18254365663', code='442634')
+verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to='+18254365663', code='816667')
 
 print(verification_check.status)

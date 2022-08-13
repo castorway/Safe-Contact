@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/output.css') }}"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- main  -->
+    <div
+      class="w-screen h-screen bg-white flex flex-row justify-start overflow-hidden shadow-xl"
+    >
+      <!-- lhs -->
+      <div
+        class="bg-gradient-to-t from-stone-800 to-stone-700 w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-3xl overflow-hidden"
+      >
+        <!-- top part of lhs -->
+        <div class="text-center text-white text-2xl font-bold mb-12">
+          SIDEBAR
+        </div>
+        <div class="rounded-full w-28 h-28 bg-red-100"></div>
+        <div class="text-white mt-3 font-bold">Current User</div>
+        <div class="text-stone-400 text-sm my-2">Admin</div>
+
+        <!-- options -->
+      </div>
+
+      <!-- rhs -->
+      <div class="w-5/6 h-full"></div>
+    </div>
+  </body>
+</html>

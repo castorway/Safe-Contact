@@ -41,5 +41,10 @@
   <body>
     <!-- content -->
     <div class="w-screen h-screen">{% block content %} {% endblock %}</div>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='verify.js') }}"
+    ></script>
   </body>
 </html>

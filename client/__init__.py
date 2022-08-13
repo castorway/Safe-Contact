@@ -20,11 +20,13 @@ def create_app():
 
     # import blueprints
     from .auth import auth
+    from .routes import routes
     
     # import models
     from .models import User
 
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(routes, url_prefix='/')
     
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
