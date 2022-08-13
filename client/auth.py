@@ -103,7 +103,10 @@ def verify():
 
     else:
         # form submitted with code; check verification
-        code = request.form.get('code')
+        print(request.form)
+        code = [request.form[f'num-{i}'] for i in range(1, 7)]
+        code = ''.join(code)
+
         print('code:', code)
         user_params = session['user_params']
         number = user_params['country_code'] + user_params['phone_number']
