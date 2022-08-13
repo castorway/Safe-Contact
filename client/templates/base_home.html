@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/font-awesome.min.css">
     <title>Home</title>
 </head>
 
 <body class="bg-gray-100">
     <!-- main  -->
-    <div class="w-screen h-screen bg-black flex flex-row justify-start shadow-xl overflow-hidden">
+    <div class="bg-gray-100 w-screen h-screen flex flex-row justify-start shadow-xl overflow-hidden">
         <!-- sidebar -->
         <div
-            class="bg-white w-1/6 h-full py-10 flex flex-col justify-center items-center rounded-r-2xl overflow-hidden">
+            class="bg-white w-1/6 h-full py-10 flex flex-col justify-center items-center rounded-r-[2rem] overflow-hidden">
             <!-- logo and name -->
             <div class="flex flex-col justify-center items-center mb-32">
                 <!-- logo -->
@@ -39,11 +40,9 @@
 
                 <ul class="text-bold text-gr">
                     <!-- Items Section -->
-
                     <li class="hover:bg-gray-100 w-full flex flex-row">
-                        <i class="fa-solid fa-house-chimney text-black bg-black"></i>
-                        <a href="." class="h-16 flex justify-left items-center w-full
-  					focus:text-orange-500">
+                        <i class="fa-solid fa-house-chimney fa-lg text-black bg-black"></i>
+                        <a href="." class="h-16 flex justify-left items-center w-full focus:text-orange-500">
                             Overview
                         </a>
                     </li>
