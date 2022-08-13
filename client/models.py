@@ -1,11 +1,13 @@
-from . import db # import the database from the website package
 from flask_login import UserMixin # custom user class to inherit from
 from sqlalchemy import Column, ForeignKey, Integer, Table, PrimaryKeyConstraint, ForeignKeyConstraint
 from sqlalchemy.orm import declarative_base, relationship
 
+from . import db # import the database from the website package
+
 user_connection_table = Table('user_connection_table', db.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('connections_id', db.Integer, db.ForeignKey('connections.id'))
+    db.Column('admin_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('contact_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('connection_id', db.Integer, db.ForeignKey('connection.id'))
 )
 
 class User(db.Model, UserMixin):
@@ -16,15 +18,26 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150), nullable=False)
     username = db.Column(db.String(150), unique=True)
 
-    connections = db.relationship("Connections", secondary=user_connection_table, 
-        backref='users')
-
-class Connections(db.Model):
-    #__tablename__ = "connect"
+class Connection(db.Model):
+    __tablename__ = "connection"
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.DateTime)
+
     last_text = db.Column(db.DateTime)
     interval = db.Column(db.DateTime)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
+
+    location_tracking = db.Column(db.Boolean)
+    text_contents = db.Column(db.String(300))
 
     admin_id = db.Column(db.Integer)
     contact_id = db.Column(db.Integer)
+
+class Text(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time_sent = db.Column(db.DateTime)
+    reply_contents = db.Column(db.String(300))
+    reply_time = db.Column(db.DateTime)
+
+    connection_id = db.Column(db.Integer, db.ForeignKey("connection.id"))
+    connection = relationship("Connection", backref="texts")

@@ -12,56 +12,65 @@
         </div>
 
         <!-- The form -->
-        <div class="w-full bg-green400 mt-6 flex flex-col">
-            <div class="flex flex-row w-full space-x-4">
-                <div class="w-1/2 h-6/10">
-                    <div class="mb-6">
-                        <label for="username">Person/Conncection</label>
-                        <input type="text" id="person" name="person" placeholder="Person"
-                            class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                            id="person large-input" name="person" placeholder="Person" />
-                    </div>
-                    <div class="flex flex-row w-full space-x-3">
-                        <div class="mb-6 w-1/3">
-                            <label for="dd">Start Date</label>
-                            <input type="datetime-local" id="dd" name="dd" placeholder="dd"
+        <form method="POST">
+            <div class="w-full bg-green400 mt-6 flex flex-col">
+                <div class="flex flex-row w-full space-x-4">
+                    <div class="w-1/2 h-6/10">
+                        <div class="mb-6">
+                            <label for="username">Person/Conncection</label>
+                            <input type="text" id="person" name="username" placeholder="Person"
+                                class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                                id="person large-input" name="person" placeholder="Person" />
+                        </div>
+                        <div class="flex flex-row w-full space-x-3">
+                            <div class="mb-6 w-1/3">
+                                <label for="dd">Start Time</label>
+                                <input type="time" id="start_date" name="start_date" placeholder="Start Date"
+                                    class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                                    id="dd large-input" name="dd" placeholder="dd" />
+                            </div>
+                            <div class="mb-4 w-1/3">
+                                <label for="username">End Time</label>
+                                <input type="time" id="end_date" name="end_date" placeholder="End Date"
+                                    class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                                    id="end_date large-input" name="end_date" />
+                            </div>
+                            <div class="mb-6 w-1/3">
+                                <label for="interval">Time Interval (minutes)</label>
+                                <input type="text" pattern="\d*" id="interval" name="interval"
+                                    placeholder="Time Interval"
+                                    class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                                    id="interval large-input" />
+                            </div>
+                        </div>
+                        <div class="mb-6 w-1/3 flex flex-row">
+                            <label for="dd">Location Tracking</label>
+                            <input type="checkbox" id="location_tracking" name="location_tracking"
                                 class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
                                 id="dd large-input" name="dd" placeholder="dd" />
                         </div>
-                        <div class="mb-4 w-1/3">
-                            <label for="username">End Date</label>
-                            <input type="datetime-local" id="end_date" name="end_date" placeholder="End Date"
-                                class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                id="end_date large-input" name="end_date" />
-                        </div>
-                        <div class="mb-6 w-1/3">
-                            <label for="interval">Interval</label>
-                            <input type="text" id="interval" name="interval" placeholder="Time Interval"
-                                class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                id="interval large-input" />
-                        </div>
+                    </div>
+                    <div class="w-1/2 h-full">
+                        <label for="description">Description</label>
+                        <textarea id="message" rows="5" name="text_contents"
+                            class="block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                            placeholder="Your message..."></textarea>
+
                     </div>
                 </div>
-                <div class="w-1/2 h-full">
-                    <label for="description">Description</label>
-                    <textarea id="message" rows="5"
-                        class="block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                        placeholder="Your message..."></textarea>
 
+                <!-- buttons -->
+                <div class="flex mb-20">
+                    <!-- login button -->
+                    <div class="w-2/5">
+                        <button type="Submit"
+                            class="w-full h-[50px] bg-black hover:bg-gray-700 text-white hover:text-white hover:border-black font-medium py-2 px-4 rounded">
+                            Start Session
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <!-- buttons -->
-            <div class="flex mb-20">
-                <!-- login button -->
-                <div class="w-2/5">
-                    <button type="Submit"
-                        class="w-full h-[50px] bg-black hover:bg-gray-700 text-white hover:text-white hover:border-black font-medium py-2 px-4 rounded">
-                        Start Session
-                    </button>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
     <!-- <div class="bg-green-500 h-1/2 ml-8">View/Manage all sessions</div> -->
 </div>

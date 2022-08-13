@@ -8,7 +8,7 @@
 
 .otc {
   position: relative;
-  width: 320px;
+
   margin: 0 auto;
 }
 
@@ -49,7 +49,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* 2 group of 3 items */
-input[type="number"]:nth-child(n + 4) {
+/* input[type="number"]:nth-child(n + 4) {
   order: 2;
 }
 .otc div::before {
@@ -61,7 +61,6 @@ input[type="number"]:nth-child(n + 4) {
   background: #bbbbff;
 }
 
-/* From: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
 .otc label {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -74,7 +73,7 @@ input[type="number"]:nth-child(n + 4) {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
-}
+} */
 
 /* .home-card {
   @apply 

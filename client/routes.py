@@ -13,3 +13,4 @@ def home():
 @routes.route('/view', methods=['GET', 'POST'])
 def view():
     return render_template('view.html', user=current_user)
+

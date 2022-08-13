@@ -3,19 +3,17 @@
 <!-- rhs -->
 <div class="flex flex-col w-full h-full p-5">
   <!-- profile and logout -->
-  <div
-    class="upperhalf w-full h-40 flex flex-row justify-between items-center px-5"
-  >
+  <div class="upperhalf w-full h-40 flex flex-row justify-between items-center px-5">
     <!-- profile -->
     <div class="flex flex-row gap-3 items-center">
       <div class="rounded-full w-16 h-16 bg-red-300"></div>
       <div class="text-black text-3xl font-semibold">Hi, Username!</div>
     </div>
     <!-- logout -->
-    <button
-      class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full"
-    >
-      Logout
+    <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
+      <a href="/logout" class=" flex justify-left items-center w-full">
+        Logout
+      </a>
     </button>
   </div>
 
@@ -43,14 +41,10 @@
                 </div>
               </div>
               <div class="w-full flex flex-row justify-between">
-                <div
-                  class="name text-sm text-black flex justify-center items-center"
-                >
+                <div class="name text-sm text-black flex justify-center items-center">
                   <div>Start - Current</div>
                 </div>
-                <button
-                  class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full"
-                >
+                <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
                   End
                 </button>
               </div>
@@ -59,7 +53,7 @@
         </div>
         <div class="home-card w-full h-1/3 bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
-            <div class="lhs w-1/3 bg-green-300 h-full rounded-[2rem]"></div>
+            <div class="lhs w-1/3 bg-blue-300 h-full rounded-[2rem]"></div>
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
@@ -70,14 +64,10 @@
                 </div>
               </div>
               <div class="w-full flex flex-row justify-between">
-                <div
-                  class="name text-sm text-black flex justify-center items-center"
-                >
+                <div class="name text-sm text-black flex justify-center items-center">
                   <div>Start - Current</div>
                 </div>
-                <button
-                  class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full"
-                >
+                <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
                   End
                 </button>
               </div>
@@ -86,7 +76,7 @@
         </div>
         <div class="home-card w-full h-1/3 bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
-            <div class="lhs w-1/3 bg-green-300 h-full rounded-[2rem]"></div>
+            <div class="lhs w-1/3 bg-red-300 h-full rounded-[2rem]"></div>
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
@@ -97,14 +87,10 @@
                 </div>
               </div>
               <div class="w-full flex flex-row justify-between">
-                <div
-                  class="name text-sm text-black flex justify-center items-center"
-                >
+                <div class="name text-sm text-black flex justify-center items-center">
                   <div>Start - Current</div>
                 </div>
-                <button
-                  class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full"
-                >
+                <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
                   End
                 </button>
               </div>
@@ -121,11 +107,16 @@
           <div class="text-black font-bold text-xl">Friends List</div>
         </div>
         <!-- friend card -->
-        <div
-          class="flex flex-row w-full h-1/5 shadow-md bg-gray-100 rounded-[2rem] overflow-hidden"
-        >
-          <div class="h-full w-1/4 bg-blue-500 border-r-2 border-black"></div>
-          <div class="h-full w-3/4 bg-green-500"></div>
+        <div class="flex flex-row w-full h-1/6 shadow-md bg-gray-100 rounded-[2rem] overflow-hidden p-3">
+          <div class="h-full w-1/5 bg-blue-500 border-r-[3px] border-gray-300 flex justify-center items-center">
+            <div class="h-16 w-16 bg-pink-300 rounded-full text-6xl flex justify-center items-center">01</div>
+          </div>
+          <div class="h-full w-4/5 bg-green-500 flex flex-row justify-between">
+            <div class="flex flex-col w-1/2 h-full bg-purple-300">
+              <div class="text-xl">Bhagya Patel</div>
+              <div class="text-base">User Bio</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

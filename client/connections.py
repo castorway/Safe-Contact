@@ -1,7 +1,11 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from flask_login import login_required, current_user
-from .models import User, Connections
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime, timedelta
+
+from .models import User, Connection, user_connection_table
 from . import models
+
 from . import db
 
 conns = Blueprint('conns', __name__)
@@ -12,24 +16,37 @@ def connection():
     if request.method == 'POST':
         # creating a new connection as the contact
         username = request.form.get('username')
-        interval = request.form.get('interval')
         location_tracking = request.form.get('location_tracking')
         text_contents = request.form.get('text_contents')
-        #emergency_numbers = request.form.get('emergency_numbers')
 
         admin = User.query.filter_by(username=username).first()
 
-        new_conn = Connections({
-            'admin': admin,
-            'contact': current_user,
-            'interval': interval,
+        # TODO: will need to parse these into datetime
+        start_time = request.form.get('start_time')
+        end_time = request.form.get('end_time')
+        interval = request.form.get('interval')
+
+        new_conn = Connection({
+            'admin_id': admin.id,
+            'contact_id': current_user.id,
+            'interval': timedelta(minutes=int(interval)),
             'location_tracking': location_tracking,
-            'text_contents': text_contents
-            #'emergency_numbers': emergency_numbers
+            'text_contents': text_contents,
+            'start_time': start_time,
+            'end_time': end_time,
+            'last_text': datetime.now() - timedelta(minutes=int(interval))
         })
 
         db.session.add(new_conn)
-        # add conn to list of conns for admin and contact
+
+        new_table_row = user_connection_table({
+            'admin_id': admin.id,
+            'contact_id': current_user.id,
+            'connection_id': new_conn.id
+        })
+
+        db.session.add(new_table_row)
+        db.session.commit()
 
         return render_template('connection.html', user=current_user)
     else:
@@ -38,4 +55,28 @@ def connection():
 @conns.route('/settings', methods=['GET', 'POST'])
 # @login_required
 def settings():
-    return render_template('settings.html', user=current_user)
+    if request.method == "POST":
+        username = request.form.get('username')
+        init_password = request.form.get('init_password')
+        confirm_password = request.form.get('confirm_password')
+        country_code = request.form.get('country_code')
+        phone_number = request.form.get('phone_number')
+        print("Settings change submitted for", username, phone_number)
+
+        if username != None:
+            current_user.username = username
+        
+        if (init_password == confirm_password) and (init_password != None):
+            current_user.password = generate_password_hash(init_password, method="sha256")
+            
+        if country_code != None:
+            current_user.country_code = country_code
+            
+        if phone_number != None:
+            current_user.phone_number = phone_number
+
+        # return back to the signup page with any flashed error messages
+        return render_template('settings.html', user=current_user)
+
+    else:
+        return render_template('settings.html', user=current_user)
