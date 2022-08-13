@@ -1,1 +1,20 @@
-## Instructions
+# Instructions
+
+This webapp requires API/authentication keys for Twilio and ngrok to run correctly, as well as a verification service to be set up on the corresponding Twilio account. [ngrok](https://ngrok.com/) must also be installed.
+
+File configuration requirements:
+
+- `ngrok.exe` should be in the `HackAlpha` directory.
+- `.env` should be in the `HackAlpha` directory, and contain the variables VERIFY_SERVICE_SID, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_NUMBER.
+
+Twilio requirements:
+
+- A Verify Service should be set up on the Twilio account with access to SMS verification, and VERIFY_SERVICE_SID should use the SID for this service.
+- The Twilio phone number should be specified in the `.env` file.
+- The Messaging POST webhook for the Twilio phone number should be set to the webhook created by ngrok after `start.sh` is run.
+
+ngrok requirements:
+
+- ngrok must be authenticated, as described [here](https://dashboard.ngrok.com/get-started/your-authtoken).
+
+Run `source start.sh` to start the application if all keys and tokens are in the correct places.
