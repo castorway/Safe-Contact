@@ -27,22 +27,25 @@
       </div>
       <!-- cards -->
       <div class="h-full w-full flex flex-col justify-start gap-y-6">
-        <!-- card -->
+
+        <!-- CARD STARTS HERE -->
+        {% for connect in connects %}
+        {% if connect.admin_id == current_user.id %}
         <div class="home-card w-full h-1/3 bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
             <div class="lhs w-1/3 bg-green-300 h-full rounded-[2rem]"></div>
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
-                  Name of Friend
+                  {{ connect.contact_id.username }}
                 </div>
                 <div class="location text-sm text-black">
-                  Description of where they are/what they are doing
+                  {{ connect.text_contents }}
                 </div>
               </div>
               <div class="w-full flex flex-row justify-between">
                 <div class="name text-sm text-black flex justify-center items-center">
-                  <div>Start - Current</div>
+                  <div>{{ connect.start_time }} - {{ connect.end_time }}</div>
                 </div>
                 <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
                   End
@@ -51,6 +54,10 @@
             </div>
           </div>
         </div>
+        {% endif %}
+        {% endfor %}
+        <!-- CARD ENDS HERE -->
+
         <div class="home-card w-full h-1/3 bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
             <div class="lhs w-1/3 bg-blue-300 h-full rounded-[2rem]"></div>
@@ -107,13 +114,15 @@
           <div class="text-black font-bold text-xl">Friends List</div>
         </div>
         <div class="h-full flex flex-col gap-y-3">
+          {% for user in users %}
+          <!-- {% if user.id != current_user.id %} -->
           <div class="flex flex-row w-full h-1/6 overflow-hidden p-3">
             <div class="h-full w-1/5 border-r-2 border-gray-300 flex justify-center items-center">
               <div class="h-16 w-16  rounded-full text-5xl flex justify-center items-center">01</div>
             </div>
             <div class="h-full w-4/5 flex flex-row justify-between ml-3">
               <div class="flex flex-col w-1/2 h-full justify-between">
-                <div class="text-xl">Bhagya Patel</div>
+                <div class="text-xl">user.username</div>
                 <div class="text-base">User Bio</div>
               </div>
               <div class="flex w-1/2 text-center justify-center items-center">
@@ -121,6 +130,8 @@
               </div>
             </div>
           </div>
+          <!-- {% endif %} -->
+          {% endfor %}
           <div class="flex flex-row w-full h-1/6 overflow-hidden p-3">
             <div class="h-full w-1/5 border-r-2 border-gray-300 flex justify-center items-center">
               <div class="h-16 w-16  rounded-full text-5xl flex justify-center items-center">01</div>
