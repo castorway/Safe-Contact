@@ -1,4 +1,8 @@
 from client import create_app
+from pymongo import MongoClient
+import json
+import flask
+import hashlib
 
 # make the web app
 app = create_app()

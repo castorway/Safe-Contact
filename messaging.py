@@ -75,3 +75,4 @@ def check_verification(number, code):
     """
     ver = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to='+15017122661', code='123456')
     return check.status == 'approved'
+

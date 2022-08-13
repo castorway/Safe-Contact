@@ -1,112 +1,101 @@
-{% extends "base.html"%} {% block title %} Login {% endblock %} {% block content
-%}
+{% extends "base.html"%} {% block title %} Login {% endblock %} {% block content %}
 <!-- window -->
-<div class="w-full h-full bg-blue-500 flex justify-center items-center">
-  <!-- outer grey box -->
-  <div class="h-4/5 w-4/5 bg-stone-800 flex justify-evenly flex-col sm:flex-row p-20 rounded-3xl">
-    
-    <!-- left smaller box -->
-    <div class="w-1/2 pr-36 flex flex-col justify-between">
-      <div class="top">
-        <!-- logo -->
-        <div class="bg-red-300 h-20 w-20 mb-2"></div>
-        <!-- text -->
-        <div>
-          <!-- title and sub-title -->
-          <div>
-            <!-- title -->
-            <div class="text-2xl text-white">
-              Safe Contact
+<div class="w-full h-full bg-black flex justify-center items-center">
+    <!-- outer grey box -->
+    <div class="h-4/5 w-4/5 bg-[#343434] flex justify-evenly flex-col sm:flex-row p-20 rounded-3xl">
+
+        <!-- left smaller box -->
+        <div class="w-1/2 pr-36 flex flex-col justify-between">
+            <div class="top">
+                <!-- logo -->
+                <div class="bg-red-300 h-20 w-20 mb-2"></div>
+                <!-- text -->
+                <div>
+                    <!-- title and sub-title -->
+                    <div>
+                        <!-- title -->
+                        <div class="text-2xl text-white">
+                            Safe Contact
+                        </div>
+                        <!-- sub title -->
+                        <div class="text-lg text-white mb-7">
+                            GTA IV
+                        </div>
+                    </div>
+
+                    <!-- description -->
+                    <div class="text-sm text-white">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni neque aperiam mollitia exercitationem hic reiciendis, excepturi ullam vero quia sit, culpa facere laudantium voluptate modi animi ut. Iure, labore quae.
+                    </div>
+                </div>
             </div>
-            <!-- sub title -->
-            <div class="text-lg text-white mb-7">
-              GTA IV
+
+            <!-- copyright and made with love  -->
+            <div class="block">
+
+                <div class="text-sm text-white font-bold">Made with love</div>
+                <div class="text-sm text-white font-bold">Lojrem ipsum dolor sit, amet consectetur adipisicing elit.</div>
             </div>
-          </div>
-  
-          <!-- description -->
-          <div class="text-sm text-white">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni neque aperiam mollitia exercitationem hic reiciendis, excepturi ullam vero quia sit, culpa facere laudantium voluptate modi animi ut. Iure, labore quae.
-          </div>
         </div>
-      </div>
 
-      <!-- copyright and made with love  -->
-      <div class="block">
+        <!-- right smaller box (lighter grey) -->
+        <div class="bg-[#e0e0e0] w-2/5 rounded-xl">
+            <!-- content -->
+            <div class="p-16">
+                <!-- text -->
+                <div class="mb-12">
+                    <!-- title and sub-title -->
+                    <div>
+                        <!-- title -->
+                        <div class="font-bold text-4xl mb-2">
+                            Login
+                        </div>
+                        <!-- sub title -->
+                        <div class="font-light  text-lg">
+                            Welcome back! Please login to your account.
+                        </div>
+                    </div>
+                </div>
 
-        <div class="text-sm text-white font-bold">Made with love</div>
-        <div class="text-sm text-white font-bold">Lojrem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-      </div>
-    </div>
 
-    <!-- right smaller box (lighter grey) -->
-    <div class="bg-stone-400 w-2/5">
-      <!-- content -->
-      <div class="p-16 bg-red-200 rounded-xl">
-        <!-- text -->
-        <div>
-          <!-- title and sub-title -->
-          <div>
-            <!-- title -->
-            <div class="font-bold text-4xl">
-              Login
+                <!-- fields -->
+                <div>
+                    <!-- email field -->
+                    <div class="mb-6">
+                        <!-- Email Address -->
+                        <input type="email" class="form-control block p-4 w-full text-gray-900 bg-[#fff] rounded-lg border sm:text-md focus:ring-gray-300 dark:bg-white dark:placeholder-gray-300 dark:text-white focus:border-l-2 focus:border-gray-800" id="email large-input" name="email"
+                            placeholder="Email" />
+                    </div>
+                    <!-- password field -->
+                    <div>
+                        <!-- Password -->
+                        <input type="password" class="form-controlblock p-4 w-full text-gray-900 bg-white rounded-lg border sm:text-md focus:ring-gray-300 focus:border-gray-300 dark:bg-white dark:placeholder-gray-300 dark:text-white " id="password large-input" name="password"
+                            placeholder="Password" />
+                    </div>
+                </div>
             </div>
-            <!-- sub title -->
-            <div class="font-light  text-lg">
-              Welcome back! Please login to your account.
-            </div>
-          </div>
-        </div>
 
-
-      <!-- fields -->
-      <div>
-        <!-- email field -->
-        <div>
-          <!-- Email Address -->
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
-        </div>
-        <!-- password field -->
-        <div>
-          <!-- Password -->
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="Password"
-          />
-        </div>
-        </div>
-      </div>
-
-      <!-- buttons -->
-      <div class="p-16 flex mb-4w-full">
-        <!-- login button -->
-        <div class="mr-25 w-1/2">
-          <!-- Login -->
-          <button class="bg-black hover:bg-white text-white hover:te-black font-bold py-2 px-4 rounded w-4/5">
+            <!-- buttons -->
+            <div class="p-16 flex">
+                <!-- login button -->
+                <div class="w-1/2">
+                    <!-- Login -->
+                    <button class="bg-black hover:bg-white text-white hover:text-black hover:border-black font-bold py-2 px-4 rounded w-4/5">
             Login
           </button>
-        </div>
-        <!-- sign up button -->
-        <div  class="mr-25 w-1/2">
-          <!-- Sign Up -->
-          <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded w-4/5">
+                </div>
+                <!-- sign up button -->
+                <div class="w-1/2">
+                    <!-- Sign Up -->
+                    <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white hover:border-black py-2 px-4 border border-black hover:border-transparent rounded w-4/5">
             Sign Up
           </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
     </div>
 
-        {% endblock %}
-      </div>
-  </div>
+    {% endblock %}
+</div>
+</div>
 </div>
