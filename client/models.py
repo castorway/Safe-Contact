@@ -4,11 +4,11 @@ from sqlalchemy.orm import declarative_base, relationship
 
 from . import db # import the database from the website package
 
-user_connection_table = Table('user_connection_table', db.metadata,
-    db.Column('admin_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('contact_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('connection_id', db.Integer, db.ForeignKey('connection.id'))
-)
+# user_connection_table = Table('user_connection_table', db.metadata,
+#     db.Column('admin_id', db.Integer, db.ForeignKey('user.id')),
+#     db.Column('contact_id', db.Integer, db.ForeignKey('user.id')),
+#     db.Column('connection_id', db.Integer, db.ForeignKey('connection.id'))
+# )
 
 class User(db.Model, UserMixin):
     #__tablename__ = "user"
@@ -23,7 +23,7 @@ class Connection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     last_text = db.Column(db.DateTime)
-    interval = db.Column(db.DateTime)
+    interval = db.Column(db.Integer)
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
 

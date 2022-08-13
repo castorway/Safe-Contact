@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 
-from .models import User, Connection, user_connection_table
+from .models import User, Connection
 from . import models
 
 from . import db
@@ -16,7 +16,7 @@ def connection():
     if request.method == 'POST':
         # creating a new connection as the contact
         username = request.form.get('username')
-        location_tracking = request.form.get('location_tracking')
+        location_tracking = request.form.get('location_tracking') == 'on'
         text_contents = request.form.get('text_contents')
 
         admin = User.query.filter_by(username=username).first()
@@ -24,16 +24,25 @@ def connection():
             flash(f"User '{username}' not found.")
             return render_template('connection.html', user=current_user)
 
-
         # TODO: will need to parse these into datetime
         start_time = request.form.get('start_time')
         end_time = request.form.get('end_time')
         interval = request.form.get('interval')
 
+        print(start_time, end_time)
+
+        h, m = [int(x) for x in start_time.split(':')]
+        start_time = datetime.now().replace(hour=h, minute=m)
+
+        h, m = [int(x) for x in end_time.split(':')]
+        end_time = datetime.now().replace(hour=h, minute=m)
+
+        print(start_time, end_time)
+
         new_conn = Connection(
             admin_id=admin.id,
             contact_id=current_user.id,
-            interval=timedelta(minutes=int(interval)),
+            interval=int(interval),
             location_tracking=location_tracking,
             text_contents=text_contents,
             start_time=start_time,
@@ -42,14 +51,6 @@ def connection():
         )
 
         db.session.add(new_conn)
-
-        new_table_row = user_connection_table({
-            'admin_id': admin.id,
-            'contact_id': current_user.id,
-            'connection_id': new_conn.id
-        })
-
-        db.session.add(new_table_row)
         db.session.commit()
 
         return render_template('connection.html', user=current_user)
