@@ -84,13 +84,12 @@ def sign_up():
 
 @auth.route('/verify', methods=['GET', 'POST'])
 def verify():
-    #print(client.verify.v2.services(VERIFY_SERVICE_SID))
+    print(client.verify.v2.services(VERIFY_SERVICE_SID))
     if request.method == 'GET':
         # first time page loaded; make a new verification
         user_params = session['user_params']
         number = user_params['country_code'] + user_params['phone_number']
-        #TODO: put this back
-        #verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verifications.create(to=number, channel='sms')
+        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verifications.create(to=number, channel='sms')
 
         return render_template('verify.html', user=current_user) 
 
@@ -103,8 +102,7 @@ def verify():
         print('code:', code)
         user_params = session['user_params']
         number = user_params['country_code'] + user_params['phone_number']
-        #TODO: put this back
-        #verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=number, code=code)
+        verification_check = client.verify.v2.services(VERIFY_SERVICE_SID).verification_checks.create(to=number, code=code)
         
         if verification_check.status == 'approved':
             # only if the user enters the correct code do we add the user

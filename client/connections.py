@@ -20,22 +20,26 @@ def connection():
         text_contents = request.form.get('text_contents')
 
         admin = User.query.filter_by(username=username).first()
+        if admin == None:
+            flash(f"User '{username}' not found.")
+            return render_template('connection.html', user=current_user)
+
 
         # TODO: will need to parse these into datetime
         start_time = request.form.get('start_time')
         end_time = request.form.get('end_time')
         interval = request.form.get('interval')
 
-        new_conn = Connection({
-            'admin_id': admin.id,
-            'contact_id': current_user.id,
-            'interval': timedelta(minutes=int(interval)),
-            'location_tracking': location_tracking,
-            'text_contents': text_contents,
-            'start_time': start_time,
-            'end_time': end_time,
-            'last_text': datetime.now() - timedelta(minutes=int(interval))
-        })
+        new_conn = Connection(
+            admin_id=admin.id,
+            contact_id=current_user.id,
+            interval=timedelta(minutes=int(interval)),
+            location_tracking=location_tracking,
+            text_contents=text_contents,
+            start_time=start_time,
+            end_time=end_time,
+            last_text=datetime.now() - timedelta(minutes=int(interval))
+        )
 
         db.session.add(new_conn)
 
