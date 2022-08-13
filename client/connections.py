@@ -29,7 +29,7 @@ def connection():
         end_time = request.form.get('end_time')
         interval = request.form.get('interval')
 
-        print(start_time, end_time)
+        print("init look", start_time, end_time)
 
         h, m = [int(x) for x in start_time.split(':')]
         start_time = datetime.now().replace(hour=h, minute=m)

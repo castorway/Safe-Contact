@@ -4,12 +4,6 @@ from sqlalchemy.orm import declarative_base, relationship
 
 from . import db # import the database from the website package
 
-# user_connection_table = Table('user_connection_table', db.metadata,
-#     db.Column('admin_id', db.Integer, db.ForeignKey('user.id')),
-#     db.Column('contact_id', db.Integer, db.ForeignKey('user.id')),
-#     db.Column('connection_id', db.Integer, db.ForeignKey('connection.id'))
-# )
-
 class User(db.Model, UserMixin):
     #__tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
