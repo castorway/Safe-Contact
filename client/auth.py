@@ -23,11 +23,11 @@ client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 def login():
     # data = request.form  # get the data from the form, url data, etc.
     if request.method == "POST":
-        email = request.form.get("email")
+        username = request.form.get("username")
         password = request.form.get("password")
         
         # looking for a specific entry in the db and filtering by a certain column
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(username=username).first()
         if user:
             # if a user was found with the same email check the hashed password if it matches with the entered password
             if check_password_hash(user.password, password):
@@ -57,13 +57,14 @@ def sign_up():
         confirm_password = request.form.get('confirm_password')
         country_code = request.form.get('country_code')
         phone_number = request.form.get('phone_number')
+        print("Signup submitted for", username, phone_number)
 
         # find if user email already exists, error
         user = User.query.filter_by(country_code=country_code, phone_number=phone_number).first()
         if user:
             flash("Account with this phone number already exists.", category='error')
         elif len(username) < 2:
-            flash("Username must be greator than 1 character.", category="error")
+            flash("Username must be longer than 1 character.", category="error")
         elif init_password != confirm_password:
             flash("Passwords don\'t match", category="error")
         elif len(init_password) < 7:
@@ -71,6 +72,7 @@ def sign_up():
 
         else:
             # ready for verification; save params and go to verify page
+            print("Ready to verify user")
             user_params = {
                 'phone_number' : phone_number,
                 'country_code' : country_code,
