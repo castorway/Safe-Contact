@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from flask_login import login_required, current_user
-from .models import User, Connection
+from .models import User, Connections
 from . import models
 from . import db
 
@@ -19,7 +19,7 @@ def connection():
 
         admin = User.query.filter_by(username=username).first()
 
-        new_conn = Connection({
+        new_conn = Connections({
             'admin': admin,
             'contact': current_user,
             'interval': interval,

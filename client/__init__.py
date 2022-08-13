@@ -27,6 +27,7 @@ def create_app():
     
     # import models
     from .models import User
+    from .models import Connections
 
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(routes, url_prefix='/')

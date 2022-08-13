@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from .models import Connection, User
+from .models import Connections, User
 from . import db
 import os
 from twilio.rest import Client
@@ -32,8 +32,8 @@ def send_texts(scheduler):
         earlier_time = (now - timedelta(minutes=TOLERANCE)).time()
         print(this_time, earlier_time)
 
-        connections = Connection.query.filter(Connection.time <= this_time)
-        connections = connections.filter(Connection.time >= earlier_time)
+        connections = Connections.query.filter(Connections.time <= this_time)
+        connections = connections.filter(Connections.time >= earlier_time)
 
         for conn in connections:
             if DEBUG: print(">", conn, conn.last_text, conn.interval, this_time, flush=True)
