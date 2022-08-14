@@ -82,6 +82,8 @@ def settings():
         if phone_number != None:
             current_user.phone_number = phone_number
 
+        db.session.commit()
+
         # return back to the signup page with any flashed error messages
         return render_template('settings.html', user=current_user)
 
