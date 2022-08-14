@@ -29,6 +29,10 @@ class Connection(db.Model):
     admin_username = db.Column(db.String(150))
     contact_id = db.Column(db.Integer)
     contact_username = db.Column(db.String(150))
+    
+    lat = db.Column(db.Float)
+    long = db.Column(db.Float)
+    accuracy = db.Column(db.Float)
 
 class Text(db.Model):
     id = db.Column(db.Integer, primary_key=True)

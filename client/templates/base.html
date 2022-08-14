@@ -34,6 +34,12 @@
       href="{{ url_for('static', filename='css/output.css') }}"
     />
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+
     <!-- Title of the website -->
     <title>{% block title %}Home{% endblock %}</title>
   </head>
@@ -41,10 +47,5 @@
   <body>
     <!-- content -->
     <div class="w-screen h-screen">{% block content %} {% endblock %}</div>
-
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='verify.js') }}"
-    ></script>
   </body>
 </html>

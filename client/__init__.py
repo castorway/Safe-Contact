@@ -24,6 +24,7 @@ def create_app():
     from .auth import auth
     from .routes import routes
     from .connections import conns
+    from .geolocation import geo
     
     # import models
     from .models import User
@@ -32,6 +33,7 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(routes, url_prefix='/')
     app.register_blueprint(conns, url_prefix='/')
+    app.register_blueprint(geo, url_prefix='/')
 
     # scheduler stuff
     scheduler = APScheduler()
