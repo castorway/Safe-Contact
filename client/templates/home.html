@@ -29,7 +29,7 @@
       <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll scrollbar">
         <!-- CARD STARTS HERE -->
         {% for connect in connects %}
-        {% if connect.contact_id == current_user.id %}
+        {% if connect.admin_id == current_user.id %}
         <div class="home-card w-full min-h-[200.52px] bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
             <div class="lhs w-1/3 h-full rounded-[1.5rem] overflow-hidden border-4 border-black">
@@ -45,7 +45,7 @@
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
-                  POI: {{ connect.admin_username }}
+                  POI: {{ connect.contact_username }}
                 </div>
                 <div class="location text-sm text-black break-words">
                   <div class="name text-sm text-black font-normal">
@@ -152,7 +152,7 @@
           <!-- CARD STARTS HERE -->
 
           {% for connect in connects %}
-          {% if connect.admin_id == current_user.id %}
+          {% if connect.contact_id == current_user.id %}
           <div class="home-card w-full min-h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
             <div class="home-card-content w-full h-full flex flex-row">
               <div class="lhs w-12 h-12 rgb-baby rounded-[2rem]"></div>
