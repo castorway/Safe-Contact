@@ -31,7 +31,7 @@ def login():
         if user:
             # if a user was found with the same email check the hashed password if it matches with the entered password
             if check_password_hash(user.password, password):
-                flash("Logged in successfully!", category='success')
+                #flash("Logged in successfully!", category='success')
                 login_user(user, remember=True)  # logging in this user
                 return redirect(url_for('routes.home'))
             else:

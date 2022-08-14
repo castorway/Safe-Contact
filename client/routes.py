@@ -18,7 +18,15 @@ def home():
     connects = Connection.query.order_by(Connection.end_time.desc())
     text = Text.query.order_by(Text.time_sent.desc()) # connection.texts
 
-    return render_template('home.html', user=current_user, users=users, connects=connects, text=text)
+    num_admin = 0
+    num_contact = 0
+    for conn in connects:
+        if conn.admin_id == current_user.id:
+            num_admin += 1
+        elif conn.contact_id == current_user.id:
+            num_contact += 1
+
+    return render_template('home.html', user=current_user, users=users, connects=connects, text=text, num_admin=num_admin, num_contact=num_contact)
 
 @routes.route('/incoming', methods=['GET', 'POST'])
 def incoming():

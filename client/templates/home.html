@@ -3,7 +3,7 @@
 <!-- rhs -->
 <div class="flex flex-col w-full h-full p-5">
   <!-- profile and logout -->
-  <div class="upperhalf w-full h-40 flex flex-row justify-between items-center px-5">
+  <div class="upperhalf w-full h-40 flex flex-row justify-between items-center mb-4">
     <!-- profile -->
     <div class="flex flex-row gap-3 items-center">
       <div class="rounded-full w-16 h-16 rgb-baby-r"></div>
@@ -23,17 +23,25 @@
     <div class="left flex flex-col justify-start h-full w-1/2 mr-10">
       <!-- Title -->
       <div class="w-full font-semibold text-3xl text-black mb-4">
-        Keepin' Connected
+        You are keeping an eye on:
       </div>
       <!-- cards -->
-      <!-- <div class="h-full w-full flex flex-col justify-start gap-y-6"> -->
       <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll scrollbar">
         <!-- CARD STARTS HERE -->
         {% for connect in connects %}
         {% if connect.contact_id == current_user.id %}
         <div class="home-card w-full min-h-[200.52px] bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
-            <div class="lhs w-1/3 rgb-baby h-full rounded-[2rem]"></div>
+            <div class="lhs w-1/3 h-full rounded-[1.5rem] overflow-hidden border-4 border-black">
+              {% if connect.lat != None %}
+              <img
+                src="https://maps.googleapis.com/maps/api/staticmap?center={{ connect.lat }},{{ connect.long }}&markers=color:red%7Clabel:HERE%7C{{ connect.lat }},{{ connect.long }}&zoom=17&size=450x450&maptype=roadmap&key=AIzaSyCUU__-JQrar3wpIZ7hLjxj1f430REFlms"
+                alt="Google Map of Albany, NY" />
+              {% else %}
+              <div class="rgb-baby"></div>
+              {% endif %}
+            </div>
+            <!-- <div id="map"></div> -->
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
@@ -62,19 +70,35 @@
                   </div>
                 </div>
                 <br>
-                <div class="location text-sm text-black break-words">
-                  <div class="name text-sm text-black font-normal">
-                    Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p') }}
-                  </div>
-                  <div class="location text-sm text-black font-normal">
-                    Interval between SMS: {{ connect.interval }} mins
+                <div class="flex flex-row justify-between">
+                  <div class="location text-sm text-black break-words">
+                    <div class="name text-sm text-black font-normal">
+                      Latitude:
+                      {% if connect.lat != None %}
+                      {{ connect.lat }}
+                      {% else %}
+                      -
+                      {% endif %}
+                    </div>
+                    <div class="location text-sm text-black font-normal">
+                      Longitude:
+                      {% if connect.long != None %}
+                      {{ connect.long }}
+                      {% else %}
+                      -
+                      {% endif %}
+                    </div>
+                    <div class="name text-sm text-black font-normal">
+                      Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p') }}
+                    </div>
+                    <div class="location text-sm text-black font-normal">
+                      Time Interval: {{ connect.interval }} mins
+                    </div>
                   </div>
                 </div>
+                <br>
               </div>
               <div class="w-full flex flex-row justify-between">
-                <!-- <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
-                  End
-                </button> -->
               </div>
             </div>
           </div>
@@ -89,22 +113,46 @@
     <!-- right container -->
     <div class="left flex flex-col justify-start h-[752.43px] w-1/2 mr-10">
 
-      <!-- Calendar -->
-      <div class="upperhalf h-1/4 bg-gradient-to-t from-cyan-500 to-blue-500 rounded-[2rem]">
+      <!-- Widget -->
+      <div class="upperhalf h-1/4 bg-white shadow-lg rounded-[2rem] flex flex-row overflow-hidden">
+        <div class="w-1/2 bg-gradient-to-r from-yellow-400 to-yellow-300 h-full p-5">
+          <div class="w-full h-full flex flex-col">
+            <div class="h-1/3 w-full flex justify-center items-center  text-white">
+              <div class="text-sm text-left pl-2">Count of people you are watching over</div>
+            </div>
+            <div class="h-2/3 w-full flex justify-center items-center pl-8">
+              <div
+                class="w-[75px] h-[75px] border-4 border-white text-white rounded-full flex justify-center items-center text-4xl">
+                {{ num_admin }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/2 h-full p-5">
+          <div class="flex flex-col w-full h-full">
+            <div class="h-1/3 w-full text-sm">People watching over you ❤️</div>
+            <div class="w-full h-2/3 flex flex-row">
+              <div class="w-1/2 h-full flex justify-center items-center">
+                <div
+                  class="w-[75px] h-[75px] bg-yellow-400 rounded-full flex justify-center text-4xl text-white items-center">
+                  {{ num_contact }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="bottomhalf h-3/4 w-full overflow-hidden">
+      <div class="bottomhalf h-3/4 w-full overflow-hidden mt-7">
         <!-- Title -->
-        <div class="w-full font-semibold text-2xl text-black">
-          Connected To
+        <div class="w-full font-semibold text-2xl text-black mb-3">
+          Keeping an eye on you:
         </div>
         <!-- cards -->
         <div class="h-[490.15px] w-full flex flex-col justify-start overflow-auto scroll scrollbar gap-y-6">
-          <!-- <div class="h-[670px] w-full grid grid-cols-1 overflow-auto justify-start gap-y-6 scroll scrollbar"> -->
           <!-- CARD STARTS HERE -->
+
           {% for connect in connects %}
           {% if connect.admin_id == current_user.id %}
-
           <div class="home-card w-full min-h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
             <div class="home-card-content w-full h-full flex flex-row">
               <div class="lhs w-12 h-12 rgb-baby rounded-[2rem]"></div>
@@ -147,7 +195,6 @@
               </div>
             </div>
           </div>
-
           {% endif %}
           {% endfor %}
           <!-- CARD ENDS HERE -->

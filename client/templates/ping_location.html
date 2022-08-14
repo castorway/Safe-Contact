@@ -2,19 +2,21 @@
 
 <style>
     #map {
-        width: 50%;
-        height: 50%;
+        width: 90%;
+        height: 90%;
     }
 </style>
 
 <div class="w-full h-full flex justify-center items-center bg-white">
     <!-- outer grey box -->
-    <div class="h-2/4 w-2/4bg-gray-100 flex flex-col justify-center items-center p-20 rounded-3xl shadow-2xl">
+    <div class="h-1/2 w-1/2 flex flex-col justify-center items-center p-20 rounded-3xl shadow-2xl">
 
-        Pinging your location...
+        <div class="mb-12" id="ping_message">
+            Pinging your location...
+        </div>
         <!-- idk why but the map only shows up if there are 2 of these. do not question it or delete them -->
         <div id="map"></div>
-        
+
 
     </div>
 </div>
@@ -22,9 +24,13 @@
 <!-- idk why but the map only shows up if there are 2 of these. do not question it or delete them -->
 <div id="map"></div>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""></script>
+<!-- hacky invisible div -->
+<div id="contact_id_div" name="{{ contact_id }}"></div>
+
+<script src=" https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+    </script>
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 
@@ -43,9 +49,7 @@ crossorigin=""></script>
     if (!navigator.geolocation) {
         console.log("Your browser doesn't support geolocation feature!")
     } else {
-        setInterval(() => {
-            navigator.geolocation.getCurrentPosition(getPosition)
-        }, 5000);
+        navigator.geolocation.getCurrentPosition(getPosition)
     };
     var marker, circle, lat, long, accuracy;
 
@@ -71,21 +75,32 @@ crossorigin=""></script>
         map_init.fitBounds(featureGroup.getBounds())
 
         console.log("coordinates: Lat: " + lat + " Long: " + long + " Accuracy: " + accuracy)
-        
+
+        var invisible_div = document.getElementById("contact_id_div")
+        contact_id = invisible_div.getAttribute("name")
+        console.log("contact_id:", contact_id)
+
         var path = window.location.href
         request(path, {
             lat: lat,
             long: long,
-            accuracy: accuracy
+            accuracy: accuracy,
+            contact_id: contact_id
         })
+
+        // set message on screen
+        var ping_message = document.getElementById("ping_message")
+        ping_message.innerHTML = "Location pinged and sent to your contact. You're good to go!"
     }
 
     function request(path, params) {
+        // send new request to put location data in db
         const xhr = new XMLHttpRequest();
         sender = JSON.stringify(params)
         xhr.open('POST', path);
         xhr.send(sender);
     }
 </script>
+
 
 {% endblock %}

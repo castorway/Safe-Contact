@@ -14,6 +14,7 @@ conns = Blueprint('conns', __name__)
 # @login_required
 def connection():
     if request.method == 'POST':
+        print("Creating new connection...")
         # creating a new connection as the contact
         username = request.form.get('username')
         location_tracking = request.form.get('location_tracking') == 'on'
@@ -28,8 +29,6 @@ def connection():
         start_time = request.form.get('start_time')
         end_time = request.form.get('end_time')
         interval = request.form.get('interval')
-
-        print("init look", start_time, end_time)
 
         h, m = [int(x) for x in start_time.split(':')]
         start_time = datetime.now().replace(hour=h, minute=m)

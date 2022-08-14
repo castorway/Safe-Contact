@@ -49,14 +49,14 @@
                             <textarea id="message" rows="5" name="text_contents"
                                 class="block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
                                 placeholder="Your message..." required></textarea>
-
+                            <div class="flex flex-row mt-6">
+                                <label for="dd">Location Tracking</label>
+                                <input type="checkbox" id="location_tracking" name="location_tracking"
+                                    class="form-control block ml-4 p-1 text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
+                                    id="dd large-input" name="dd" placeholder="dd" />
+                            </div>
                         </div>
-                        <!-- <div class="mb-6 w-1/3 flex flex-row">
-                            <label for="dd">Location Tracking</label>
-                            <input type="checkbox" id="location_tracking" name="location_tracking"
-                                class="form-control block p-3 w-full text-black bg-[#e9e9e9] rounded-lg border sm:text-md focus:ring-gray-300 focus:border-l-2"
-                                id="dd large-input" name="dd" placeholder="dd" />
-                        </div> -->
+
                     </div>
 
                 </div>
@@ -73,6 +73,5 @@
             </div>
         </form>
     </div>
-    <!-- <div class="bg-green-500 h-1/2 ml-8">View/Manage all sessions</div> -->
 </div>
 {% endblock %}
