@@ -56,7 +56,7 @@ def send_texts(scheduler):
                     text_contents = conn.text_contents
 
                 if conn.location_tracking:
-                    text_contents += f"\nPing my location: https://6d4e-2604-3d09-7483-1e00-8004-b164-d1-91ad.ngrok.io/ping_location?id={contact.id}"
+                    text_contents += f"\nhttps://33b5-2604-3d09-6987-1500-dcdc-bc4-5574-7033.ngrok.io/ping_location?id={contact.id}"
 
                 print('contents:', text_contents)
                 client.messages.create(body=text_contents, from_=TWILIO_NUMBER, to=number)
