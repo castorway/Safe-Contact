@@ -69,6 +69,7 @@ def settings():
         country_code = request.form.get('country_code')
         phone_number = request.form.get('phone_number')
         print("Settings change submitted for", username, phone_number)
+        print(username, init_password, confirm_password, country_code, phone_number)
 
         if (username != None) or (username != ""):
             current_user.username = username
