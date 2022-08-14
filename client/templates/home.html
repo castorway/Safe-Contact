@@ -28,6 +28,7 @@
       <!-- cards -->
       <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll scrollbar">
         <!-- CARD STARTS HERE -->
+        {% if admin_count != 0 %}
         {% for connect in connects %}
         {% if connect.admin_id == current_user.id %}
         <div class="home-card w-full min-h-[323px] bg-white shadow-lg p-4 rounded-3xl">
@@ -72,34 +73,33 @@
                   </div>
                   <br>
                   <div class="flex flex-col justify-between h-full">
-                    <div class="h-full text-sm text-black break-words flex flex-col justify-between">
-                      <div class="block">
-                        <div class="name text-sm text-black font-normal">
-                          Latitude:
-                          {% if connect.lat != None %}
-                          {{ connect.lat }}
-                          {% else %}
-                          -
-                          {% endif %}
-                        </div>
-                        <div class="location text-sm text-black font-normal">
-                          Longitude:
-                          {% if connect.long != None %}
-                          {{ connect.long }}
-                          {% else %}
-                          -
-                          {% endif %}
-                        </div>
+                    <div class="h-full text-sm text-black break-words flex flex-col">
+
+                      <div class="name text-sm text-black font-normal">
+                        Latitude:
+                        {% if connect.lat != None %}
+                        {{ connect.lat }}
+                        {% else %}
+                        -
+                        {% endif %}
                       </div>
-                      <div class="block">
-                        <div class="name text-sm text-black font-normal">
-                          Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p')
-                          }}
-                        </div>
-                        <div class="location text-sm text-black font-normal">
-                          Time Interval: {{ connect.interval }} mins
-                        </div>
+                      <div class="location text-sm text-black font-normal">
+                        Longitude:
+                        {% if connect.long != None %}
+                        {{ connect.long }}
+                        {% else %}
+                        -
+                        {% endif %}
                       </div>
+                      <br />
+                      <div class="name text-sm text-black font-normal">
+                        Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p')
+                        }}
+                      </div>
+                      <div class="location text-sm text-black font-normal">
+                        Time Interval: {{ connect.interval }} mins
+                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -112,6 +112,9 @@
         </div>
         {% endif %}
         {% endfor %}
+        {% else %}
+        You have no connections right now.
+        {% endif %}
         <!-- CARD ENDS HERE -->
 
       </div>

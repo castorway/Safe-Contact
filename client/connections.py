@@ -71,16 +71,16 @@ def settings():
         print("Settings change submitted for", username, phone_number)
         print(username, init_password, confirm_password, country_code, phone_number)
 
-        if (username != None) or (username != ""):
+        if (username != None) and (username != ""):
             current_user.username = username
         
-        if (init_password == confirm_password) and (init_password != None):
+        if (init_password == confirm_password) and (init_password != "None") and (init_password != None):
             current_user.password = generate_password_hash(init_password, method="sha256")
             
-        if (country_code != None) or (country_code != "None"):
+        if (country_code != None) and (country_code != ""):
             current_user.country_code = country_code
             
-        if (phone_number != None) or (phone_number != "None"):
+        if (phone_number != None) and (phone_number != ""):
             current_user.phone_number = phone_number
 
         db.session.commit()
