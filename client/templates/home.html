@@ -75,8 +75,7 @@
           My Connections
         </div>
         <!-- cards -->
-        <div
-          class="h-[490.15px] w-full grid grid-cols-1 grid-rows-5 justify-start gap-y-6 overflow-auto scroll scrollbar">
+        <div class="h-[490.15px] w-full grid grid-cols-1 justify-start gap-y-6 overflow-auto scroll scrollbar ">
           <!-- <div class="h-[670px] w-full grid grid-cols-1 overflow-auto justify-start gap-y-6 scroll scrollbar"> -->
           <!-- CARD STARTS HERE -->
           {% for connect in connects %}
@@ -86,24 +85,24 @@
             <div class="home-card-content w-full h-full flex flex-row">
               <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
               <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
-                <div class="w-full block">
-                  <div class="name text-md text-black font-medium">
+                <div class="w-4/12 block">
+                  <div class="name text-md text-black font-normal">
                     From: {{ connect.contact_username }}
                   </div>
-                  <div class="location text-md text-black font-medium">
+                  <div class="location text-md text-black font-normal">
                     To: {{ connect.admin_username }}
                   </div>
                 </div>
-                <div class="w-full block">
-                  <div class="name text-md text-black font-medium">
+                <div class="w-4/12  block mr-4">
+                  <div class="name text-sm text-black font-normal">
                     Last Sent: {{ connect.last_text.strftime('%I:%M %p') }}
                   </div>
-                  <div class="location text-md text-black font-medium">
+                  <div class="location text-sm text-black font-normal">
                     Last Recieved: {{ connect.last_recieved.strftime('%I:%M %p') }}
                   </div>
                 </div>
-                <div class="w-full flex flex-row justify-between">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-row ">
+                <div class="w-4/12 border-l-black border-l-2">
+                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
                     <div>{{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p') }}
                     </div>
                   </div>
@@ -114,24 +113,25 @@
 
           {% endif %}
           {% endfor %}
-          <div class="home-card w-full h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
+          <!-- CARD ENDS HERE -->
+          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
             <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/6 rgb-baby h-full rounded-[2rem]"></div>
-              <div class="rhs w-5/6 h-full flex flex-row justify-between ml-4">
-                <div class="w-full block">
-                  <div class="name text-md text-black font-medium">
+              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
+              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
+                <div class="w-4/12 block">
+                  <div class="name text-md text-black font-normal">
                   </div>
-                  <div class="location text-md text-black font-medium">
-                  </div>
-                </div>
-                <div class="w-full block">
-                  <div class="name text-md text-black font-medium">
-                  </div>
-                  <div class="location text-md text-black font-medium">
+                  <div class="location text-md text-black font-normal">
                   </div>
                 </div>
-                <div class="w-full flex flex-row justify-between">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-row ">
+                <div class="w-4/12  block mr-4">
+                  <div class="name text-sm text-black font-normal">
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12 border-l-black border-l-2">
+                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
                     <div>
                     </div>
                   </div>
@@ -139,8 +139,81 @@
               </div>
             </div>
           </div>
-
-          <!-- CARD ENDS HERE -->
+          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
+            <div class="home-card-content w-full h-full flex flex-row">
+              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
+              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
+                <div class="w-4/12 block">
+                  <div class="name text-md text-black font-normal">
+                  </div>
+                  <div class="location text-md text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12  block mr-4">
+                  <div class="name text-sm text-black font-normal">
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12 border-l-black border-l-2">
+                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
+            <div class="home-card-content w-full h-full flex flex-row">
+              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
+              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
+                <div class="w-4/12 block">
+                  <div class="name text-md text-black font-normal">
+                  </div>
+                  <div class="location text-md text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12  block mr-4">
+                  <div class="name text-sm text-black font-normal">
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12 border-l-black border-l-2">
+                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
+            <div class="home-card-content w-full h-full flex flex-row">
+              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
+              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
+                <div class="w-4/12 block">
+                  <div class="name text-md text-black font-normal">
+                  </div>
+                  <div class="location text-md text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12  block mr-4">
+                  <div class="name text-sm text-black font-normal">
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+                  </div>
+                </div>
+                <div class="w-4/12 border-l-black border-l-2">
+                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
