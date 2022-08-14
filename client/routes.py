@@ -15,7 +15,7 @@ routes = Blueprint('routes', __name__)
 # @login_required
 def home():
     users = User.query.all()
-    connects = Connection.query.order_by(Connection.start_time.desc())
+    connects = Connection.query.order_by(Connection.end_time.desc())
     text = Text.query.order_by(Text.time_sent.desc()) # connection.texts
 
     return render_template('home.html', user=current_user, users=users, connects=connects, text=text)
@@ -25,9 +25,9 @@ def incoming():
     """Receive an incoming message from a contact."""
 
     print('Received incoming message:', request.form['From'], request.form['Body'])
-    print(request.form)
-    print(request.__dict__)
-    print(dir(request))
+    # print(request.form)
+    # print(request.__dict__)
+    # print(dir(request))
     
     # parse send number
     send_number = request.form['From']
@@ -61,7 +61,7 @@ def incoming():
                 connection_id=most_recent_conn.id
             )
 
-            most_recent_conn.last_received = datetime.now()
+            most_recent_conn.last_recieved = datetime.now()
 
             db.session.add(new_text)
             db.session.commit()
