@@ -23,31 +23,55 @@
     <div class="left flex flex-col justify-start h-full w-1/2 mr-10">
       <!-- Title -->
       <div class="w-full font-semibold text-3xl text-black mb-4">
-        Active Connections
+        Keepin' Connected
       </div>
       <!-- cards -->
       <!-- <div class="h-full w-full flex flex-col justify-start gap-y-6"> -->
-      <div class="h-[670px] w-full grid grid-cols-1 overflow-auto justify-between gap-y-6 scroll scrollbar">
+      <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll scrollbar">
         <!-- CARD STARTS HERE -->
         {% for connect in connects %}
-        {% if connect.admin_id == current_user.id %}
-        <div class="home-card w-full h-[200.52px] bg-white shadow-lg p-4 rounded-3xl">
+        {% if connect.contact_id == current_user.id %}
+        <div class="home-card w-full min-h-[200.52px] bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
             <div class="lhs w-1/3 rgb-baby h-full rounded-[2rem]"></div>
             <div class="rhs w-2/3 h-full flex flex-col justify-between p-3">
               <div class="w-full block">
                 <div class="name text-lg text-black font-bold">
-                  {{ connect.contact_id.username }}
+                  POI: {{ connect.admin_username }}
                 </div>
                 <div class="location text-sm text-black break-words">
-                  {{ connect.text_contents }}
+                  <div class="name text-sm text-black font-normal">
+
+                    Last Sent Message:
+                    {% if connect.last_recieved != None %}
+                    {{ connect.last_recieved.strftime('%I:%M %p') }}
+                    {% else %}
+                    -
+                    {% endif %}
+
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+
+                    Last Recieved Message:
+                    {% if connect.last_recieved != None %}
+                    {{ connect.last_recieved.strftime('%I:%M %p') }}
+                    {% else %}
+                    -
+                    {% endif %}
+
+                  </div>
+                </div>
+                <br>
+                <div class="location text-sm text-black break-words">
+                  <div class="name text-sm text-black font-normal">
+                    Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p') }}
+                  </div>
+                  <div class="location text-sm text-black font-normal">
+                    Interval between SMS: {{ connect.interval }} mins
+                  </div>
                 </div>
               </div>
               <div class="w-full flex flex-row justify-between">
-                <div class="name text-sm text-black justify-center items-center flex flex-col">
-                  <div>From: {{ connect.start_time.strftime('%I:%M %p') }}</div>
-                  <div>To: {{ connect.end_time.strftime('%I:%M %p') }}</div>
-                </div>
                 <!-- <button class="bg-black hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full">
                   End
                 </button> -->
@@ -58,6 +82,7 @@
         {% endif %}
         {% endfor %}
         <!-- CARD ENDS HERE -->
+
       </div>
     </div>
 
@@ -72,16 +97,16 @@
       <div class="bottomhalf h-3/4 w-full overflow-hidden">
         <!-- Title -->
         <div class="w-full font-semibold text-2xl text-black mb-4">
-          My Connections
+          Connected To
         </div>
         <!-- cards -->
-        <div class="h-[490.15px] w-full grid grid-cols-1 justify-start gap-y-6 overflow-auto scroll scrollbar ">
+        <div class="h-[490.15px] w-full flex flex-col justify-start gap-y-6 overflow-auto scroll scrollbar ">
           <!-- <div class="h-[670px] w-full grid grid-cols-1 overflow-auto justify-start gap-y-6 scroll scrollbar"> -->
           <!-- CARD STARTS HERE -->
           {% for connect in connects %}
-          {% if connect.contact_id == current_user.id %}
+          {% if connect.admin_id == current_user.id %}
 
-          <div class="home-card w-full h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
+          <div class="home-card w-full min-h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
             <div class="home-card-content w-full h-full flex flex-row">
               <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
               <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
@@ -95,10 +120,23 @@
                 </div>
                 <div class="w-4/12  block mr-4">
                   <div class="name text-sm text-black font-normal">
-                    Last Sent: {{ connect.last_text.strftime('%I:%M %p') }}
+
+                    Last Sent:
+                    {% if connect.last_text != None %}
+                    {{ connect.last_text.strftime('%I:%M %p') }}
+                    {% else %}
+                    -
+                    {% endif %}
                   </div>
                   <div class="location text-sm text-black font-normal">
-                    Last Recieved: {{ connect.last_recieved.strftime('%I:%M %p') }}
+
+                    Last Recieved:
+                    {% if connect.last_recieved != None %}
+                    {{ connect.last_recieved.strftime('%I:%M %p') }}
+                    {% else %}
+                    -
+                    {% endif %}
+
                   </div>
                 </div>
                 <div class="w-4/12 border-l-black border-l-2">
@@ -114,106 +152,6 @@
           {% endif %}
           {% endfor %}
           <!-- CARD ENDS HERE -->
-          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
-            <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
-              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
-                <div class="w-4/12 block">
-                  <div class="name text-md text-black font-normal">
-                  </div>
-                  <div class="location text-md text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12  block mr-4">
-                  <div class="name text-sm text-black font-normal">
-                  </div>
-                  <div class="location text-sm text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12 border-l-black border-l-2">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
-                    <div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
-            <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
-              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
-                <div class="w-4/12 block">
-                  <div class="name text-md text-black font-normal">
-                  </div>
-                  <div class="location text-md text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12  block mr-4">
-                  <div class="name text-sm text-black font-normal">
-                  </div>
-                  <div class="location text-sm text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12 border-l-black border-l-2">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
-                    <div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
-            <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
-              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
-                <div class="w-4/12 block">
-                  <div class="name text-md text-black font-normal">
-                  </div>
-                  <div class="location text-md text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12  block mr-4">
-                  <div class="name text-sm text-black font-normal">
-                  </div>
-                  <div class="location text-sm text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12 border-l-black border-l-2">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
-                    <div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="home-card w-full h-[78.83px] bg-gray-100 shadow-lg p-4 rounded-2xl">
-            <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
-              <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
-                <div class="w-4/12 block">
-                  <div class="name text-md text-black font-normal">
-                  </div>
-                  <div class="location text-md text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12  block mr-4">
-                  <div class="name text-sm text-black font-normal">
-                  </div>
-                  <div class="location text-sm text-black font-normal">
-                  </div>
-                </div>
-                <div class="w-4/12 border-l-black border-l-2">
-                  <div class="name text-sm text-black justify-center items-center  flex flex-col">
-                    <div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
