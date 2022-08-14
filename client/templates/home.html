@@ -30,24 +30,24 @@
         <!-- CARD STARTS HERE -->
         {% for connect in connects %}
         {% if connect.admin_id == current_user.id %}
-        <div class="home-card w-full min-h-[200.52px] bg-white shadow-lg p-4 rounded-3xl">
+        <div class="home-card w-full min-h-[323px] bg-white shadow-lg p-4 rounded-3xl">
           <div class="home-card-content w-full h-full flex flex-row">
             <div class="lhs w-1/2 h-full rounded-[1.5rem] overflow-hidden border-4 border-black">
               {% if connect.lat != None %}
               <img
                 src="https://maps.googleapis.com/maps/api/staticmap?center={{ connect.lat }},{{ connect.long }}&markers=color:red%7Clabel:HERE%7C{{ connect.lat }},{{ connect.long }}&zoom=17&size=450x450&maptype=roadmap&key=AIzaSyCUU__-JQrar3wpIZ7hLjxj1f430REFlms"
-                alt="Google Map of Albany, NY" class="object-cover" />
+                alt="Google Map of last location" class="object-cover" />
               {% else %}
-              <div class="rgb-baby"></div>
+              <div class="rgb-baby w-full h-full"></div>
               {% endif %}
             </div>
             <!-- <div id="map"></div> -->
             <div class="rhs w-1/2 h-full flex flex-col justify-between p-3">
-              <div class="w-full block">
+              <div class="w-full h-full">
                 <div class="name text-lg text-black font-bold">
                   POI: {{ connect.contact_username }}
                 </div>
-                <div class="location text-sm text-black break-words">
+                <div class="location h-full text-sm text-black break-words">
                   <div class="name text-sm text-black font-normal">
 
                     Last Sent Message:
@@ -68,31 +68,36 @@
                     {% endif %}
 
                   </div>
-                </div>
-                <br>
-                <div class="flex flex-col justify-between h-full">
-                  <div class="location h-full text-sm text-black break-words">
-                    <div class="name text-sm text-black font-normal">
-                      Latitude:
-                      {% if connect.lat != None %}
-                      {{ connect.lat }}
-                      {% else %}
-                      -
-                      {% endif %}
-                    </div>
-                    <div class="location text-sm text-black font-normal">
-                      Longitude:
-                      {% if connect.long != None %}
-                      {{ connect.long }}
-                      {% else %}
-                      -
-                      {% endif %}
-                    </div>
-                    <div class="name text-sm text-black font-normal">
-                      Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p') }}
-                    </div>
-                    <div class="location text-sm text-black font-normal">
-                      Time Interval: {{ connect.interval }} mins
+                  <br>
+                  <div class="flex flex-col justify-between h-full">
+                    <div class="h-full text-sm text-black break-words flex flex-col justify-between">
+                      <div class="block">
+                        <div class="name text-sm text-black font-normal">
+                          Latitude:
+                          {% if connect.lat != None %}
+                          {{ connect.lat }}
+                          {% else %}
+                          -
+                          {% endif %}
+                        </div>
+                        <div class="location text-sm text-black font-normal">
+                          Longitude:
+                          {% if connect.long != None %}
+                          {{ connect.long }}
+                          {% else %}
+                          -
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="block">
+                        <div class="name text-sm text-black font-normal">
+                          Time: {{ connect.start_time.strftime('%I:%M %p') }} - {{ connect.end_time.strftime('%I:%M %p')
+                          }}
+                        </div>
+                        <div class="location text-sm text-black font-normal">
+                          Time Interval: {{ connect.interval }} mins
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

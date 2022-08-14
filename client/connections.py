@@ -79,7 +79,7 @@ def settings():
         if (country_code != None) or (country_code != "None"):
             current_user.country_code = country_code
             
-        if (phone_number != None)  or (phone_number != "None"):
+        if (phone_number != None) or (phone_number != "None"):
             current_user.phone_number = phone_number
 
         db.session.commit()
