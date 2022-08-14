@@ -1,4 +1,11 @@
 venv
 __pycache__
 node_modules
+env
 .env
+.env.dev
+.env.prod
+.env.test
+.env.dev.local
+.env.prod.local
+.env.test.local
