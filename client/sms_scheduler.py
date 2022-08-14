@@ -26,6 +26,7 @@ def send_texts(scheduler):
     if DEBUG: print("send_texts called", flush=True)
 
     with scheduler.app.app_context():
+        # SENDING TEXTS
         print("------------- the time is...", datetime.now(), flush=True)
 
         now = datetime.now()
@@ -61,3 +62,13 @@ def send_texts(scheduler):
                 conn.last_text = now
 
         db.session.commit()
+
+        # DELETING OLD SESSIONS
+        delete_conns = Connection.query.filter(Connection.end_time < now - timedelta(hours=2))
+        print('Deleting sessions:', [d.id for d in delete_conns])
+        for d in delete_conns:
+            db.session.delete(d)
+
+        db.session.commit()
+
+

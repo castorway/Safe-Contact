@@ -90,17 +90,16 @@
     <div class="left flex flex-col justify-start h-[752.43px] w-1/2 mr-10">
 
       <!-- Calendar -->
-      <div class="h-1/4">
-
+      <div class="upperhalf h-1/4 bg-gradient-to-t from-cyan-500 to-blue-500 rounded-[2rem]">
       </div>
 
       <div class="bottomhalf h-3/4 w-full overflow-hidden">
         <!-- Title -->
-        <div class="w-full font-semibold text-2xl text-black mb-4">
+        <div class="w-full font-semibold text-2xl text-black">
           Connected To
         </div>
         <!-- cards -->
-        <div class="h-[490.15px] w-full flex flex-col justify-start gap-y-6 overflow-auto scroll scrollbar ">
+        <div class="h-[490.15px] w-full flex flex-col justify-start overflow-auto scroll scrollbar gap-y-6">
           <!-- <div class="h-[670px] w-full grid grid-cols-1 overflow-auto justify-start gap-y-6 scroll scrollbar"> -->
           <!-- CARD STARTS HERE -->
           {% for connect in connects %}
@@ -108,7 +107,7 @@
 
           <div class="home-card w-full min-h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
             <div class="home-card-content w-full h-full flex flex-row">
-              <div class="lhs w-1/12 rgb-baby h-full rounded-[2rem]"></div>
+              <div class="lhs w-12 h-12 rgb-baby rounded-[2rem]"></div>
               <div class="rhs w-11/12 h-full flex flex-row justify-between ml-4">
                 <div class="w-4/12 block">
                   <div class="name text-md text-black font-normal">
