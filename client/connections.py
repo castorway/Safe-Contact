@@ -63,22 +63,23 @@ def connection():
 def settings():
     if request.method == "POST":
         username = request.form.get('username')
+        print("user", username)
         init_password = request.form.get('init_password')
         confirm_password = request.form.get('confirm_password')
         country_code = request.form.get('country_code')
         phone_number = request.form.get('phone_number')
         print("Settings change submitted for", username, phone_number)
 
-        if username != None:
+        if (username != None) or (username != ""):
             current_user.username = username
         
         if (init_password == confirm_password) and (init_password != None):
             current_user.password = generate_password_hash(init_password, method="sha256")
             
-        if country_code != None:
+        if (country_code != None) or (country_code != "None"):
             current_user.country_code = country_code
             
-        if phone_number != None:
+        if (phone_number != None)  or (phone_number != "None"):
             current_user.phone_number = phone_number
 
         db.session.commit()
