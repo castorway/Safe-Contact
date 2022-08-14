@@ -821,20 +821,12 @@ video {
   height: 50%;
 }
 
-.min-h-\[78\.83px\] {
-  min-height: 78.83px;
-}
-
 .min-h-\[323px\] {
   min-height: 323px;
 }
 
-.min-h-\[200\.52px\] {
-  min-height: 200.52px;
-}
-
-.min-h-\[323\] {
-  min-height: 323;
+.min-h-\[78\.83px\] {
+  min-height: 78.83px;
 }
 
 .w-screen {
@@ -871,10 +863,6 @@ video {
 
 .w-16 {
   width: 4rem;
-}
-
-.w-2\/3 {
-  width: 66.666667%;
 }
 
 .w-\[75px\] {
@@ -921,6 +909,14 @@ video {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-\[100\%\] {
+  width: 100%;
 }
 
 .flex-auto {
@@ -1221,6 +1217,11 @@ video {
   line-height: 2.5rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -1431,6 +1432,19 @@ input[type="number"]:nth-child(n + 4) {
   overflow-y: overlay;
 }
 
+/* Chrome, Safari and Opera */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 5px;
   height: 20px;
@@ -1507,5 +1521,10 @@ input[type="number"]:nth-child(n + 4) {
 @media (min-width: 640px) {
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }

@@ -104,6 +104,16 @@ input[type="number"]:nth-child(n + 4) {
   overflow-y: overlay;
 }
 
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 5px;
   height: 20px;

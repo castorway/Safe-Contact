@@ -26,9 +26,9 @@
         You are keeping an eye on:
       </div>
       <!-- cards -->
-      <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll scrollbar">
+      <div class="h-[670px] w-full flex flex-col overflow-auto justify-start gap-y-6 scroll no-scrollbar">
         <!-- CARD STARTS HERE -->
-        {% if admin_count != 0 %}
+        {% if num_admin != 0 %}
         {% for connect in connects %}
         {% if connect.admin_id == current_user.id %}
         <div class="home-card w-full min-h-[323px] bg-white shadow-lg p-4 rounded-3xl">
@@ -113,10 +113,9 @@
         {% endif %}
         {% endfor %}
         {% else %}
-        You have no connections right now.
+        <div class=" bg-white shadow-lg p-4 rounded-3xl">You are not connected with anyone.</div>
         {% endif %}
         <!-- CARD ENDS HERE -->
-
       </div>
     </div>
 
@@ -140,7 +139,9 @@
         </div>
         <div class="w-1/2 h-full p-5">
           <div class="flex flex-col w-full h-full">
-            <div class="h-1/3 w-full text-sm">People watching over you ❤️</div>
+            <div class="h-1/3 w-full flex justify-center items-center  text-ble">
+              <div class="text-sm text-left">People watching over you ❤️</div>
+            </div>
             <div class="w-full h-2/3 flex flex-row">
               <div class="w-1/2 h-full flex justify-center items-center">
                 <div
@@ -158,9 +159,9 @@
           Keeping an eye on you:
         </div>
         <!-- cards -->
-        <div class="h-[490.15px] w-full flex flex-col justify-start overflow-auto scroll scrollbar gap-y-6">
+        <div class="h-[490.15px] w-full flex flex-col justify-start overflow-auto scroll no-scrollbar gap-y-6">
           <!-- CARD STARTS HERE -->
-
+          {% if num_contact != 0 %}
           {% for connect in connects %}
           {% if connect.contact_id == current_user.id %}
           <div class="home-card w-full min-h-[78.83px] bg-white shadow-lg p-4 rounded-2xl">
@@ -207,6 +208,9 @@
           </div>
           {% endif %}
           {% endfor %}
+          {% else %}
+          <div class=" bg-white shadow-lg p-4 rounded-3xl">You have no connections coming in.</div>
+          {% endif %}
           <!-- CARD ENDS HERE -->
         </div>
       </div>
