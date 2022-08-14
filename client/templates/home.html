@@ -51,8 +51,8 @@
                   <div class="name text-sm text-black font-normal">
 
                     Last Sent Message:
-                    {% if connect.last_recieved != None %}
-                    {{ connect.last_recieved.strftime('%I:%M %p') }}
+                    {% if connect.last_text != None %}
+                    {{ connect.last_text.strftime('%I:%M %p') }}
                     {% else %}
                     -
                     {% endif %}
@@ -63,6 +63,8 @@
                     Last Recieved Message:
                     {% if connect.last_recieved != None %}
                     {{ connect.last_recieved.strftime('%I:%M %p') }}
+                    <br>
+                    <i>"{{ most_recent_text.reply_contents }}"</i>
                     {% else %}
                     -
                     {% endif %}
