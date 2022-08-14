@@ -16,7 +16,8 @@ class Connection(db.Model):
     __tablename__ = "connection"
     id = db.Column(db.Integer, primary_key=True)
 
-    last_text = db.Column(db.DateTime)
+    last_text = db.Column(db.DateTime) # last text sent to user
+    last_recieved = db.Column(db.DateTime) # last text user sent to us
     interval = db.Column(db.Integer)
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
@@ -25,11 +26,13 @@ class Connection(db.Model):
     text_contents = db.Column(db.String(300))
 
     admin_id = db.Column(db.Integer)
+    admin_username = db.Column(db.String(150))
     contact_id = db.Column(db.Integer)
+    contact_username = db.Column(db.String(150))
 
 class Text(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    time_sent = db.Column(db.DateTime)
+    time_sent = db.Column(db.DateTime) # time of user's text back to us
     reply_contents = db.Column(db.String(300))
 
     connection_id = db.Column(db.Integer, db.ForeignKey("connection.id"))

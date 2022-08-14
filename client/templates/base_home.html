@@ -18,18 +18,18 @@
     <div class="bg-gray-100 w-screen h-screen flex flex-row justify-start shadow-xl overflow-hidden">
         <!-- sidebar -->
         <div
-            class="bg-white w-1/6 h-full py-10 flex flex-col justify-center items-center rounded-r-[2rem] overflow-hidden">
+            class="bg-white w-1/6 h-full py-10 flex flex-col justify-start items-center rounded-r-[2rem] overflow-hidden">
             <!-- logo and name -->
             <div class="flex flex-col justify-center items-center mb-32">
                 <!-- logo -->
-                <div class="flex justify-left items-left">
-                    <div class="h-10 w-10 mb-2">
-                        <img src="{{ url_for('static', filename='logo.svg') }}" style="width: 150px;" alt="logo" />
+                <div class="flex justify-left items-left mt-12">
+                    <div class="h-20 w-20 mb-2">
+                        <img src="{{ url_for('static', filename='logo.svg') }}" alt="logo" />
                     </div>
                 </div>
 
                 <!-- name -->
-                <div class="font-semibold text-xl text-gray-600">
+                <div class="font-semibold text-3xl text-gray-700 mt-1">
                     safe contact
                 </div>
             </div>
@@ -38,19 +38,20 @@
             <aside class="flex flex-col items-center text-gray-700 w-full ">
                 <!-- Side Nav Bar-->
 
-                <ul class="text-bold text-gr">
+                <ul class="text-bold text-gr w-ful">
                     <!-- Items Section -->
                     <li class="hover:bg-gray-100 w-full flex flex-row">
-                        <i class="fa-solid fa-house-chimney fa-lg text-black bg-black"></i>
-                        <a href="." class="h-16 flex justify-left items-center w-full focus:text-orange-500">
+                        <i class="fa-solid fa-house-chimney fa-lg h-4 mt-7 fa-flip"
+                            style="--fa-animation-duration: 5s;"></i>
+                        <a href="." class="ml-3 h-16 flex justify-left items-center w-full focus:text-gra">
                             Overview
                         </a>
                     </li>
 
                     <li class="hover:bg-gray-100 w-full flex flex-row">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <a href="/connection" class="h-16 flex justify-left items-center w-full
-  					focus:text-orange-500">
+                        <i class="fa-solid fa-mobile h-4 mt-6 ml-1 fa-shake" style="--fa-animation-duration: 5s;"></i>
+                        <a href="/connection" class="ml-4 h-16 flex justify-left items-center w-full
+  					focus:text-gray-600">
                             Connections
                         </a>
                     </li>
@@ -64,10 +65,10 @@
                         </a>
                     </li> -->
 
-                    <li class="hover:bg-gray-100 w-full flex flex-row">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <a href="/settings" class="h-16 flex justify-left items-center w-full
-  					focus:text-orange-500">
+                    <li class="hover:bg-gray-100 w-full flex flex-row ">
+                        <i class="fa-solid fa-gear fa-spin h-4 mt-6"></i>
+                        <a href="/settings" class="ml-4 h-16 flex justify-left items-center w-full
+  					focus:text-gray-600">
                             Settings
                         </a>
                     </li>
@@ -86,6 +87,7 @@
 
     </div>
     </div>
+    <script src="https://kit.fontawesome.com/8fca0e2e35.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

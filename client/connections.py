@@ -41,7 +41,9 @@ def connection():
 
         new_conn = Connection(
             admin_id=admin.id,
+            admin_username=admin.username,
             contact_id=current_user.id,
+            contact_username=current_user.username,
             interval=int(interval),
             location_tracking=location_tracking,
             text_contents=text_contents,
